@@ -59,7 +59,7 @@ const yearsUntilRetirement = (birthYear, firstName) => {
 
 console.log(yearsUntilRetirement(1972, 'Nico')); // returns: Nico will be 65 in 17 years
 console.log(yearsUntilRetirement(2004, 'Noelle')); // returns: Noelle will be 65 in 49 years
-*/
+
 function cutFruitPieces(fruit) {
   return fruit * 4;
 }
@@ -72,3 +72,24 @@ function fruitProcessor(apples, oranges) {
 }
 
 console.log(fruitProcessor(2, 3));
+*/
+const year = new Date().getFullYear();
+
+const calcAge4 = function (year, birthYear) {
+  return year - birthYear
+};
+
+const yearsUntilRetirement = function(birthYear, firstName) {
+  const retirement = 65 - calcAge4(year, birthYear);
+
+  if (retirement > 0) {
+    return `${firstName} will be 65 in ${retirement} years`;
+  } else {
+    return `${firstName} has already retired!`;
+  }
+  
+}
+
+console.log(yearsUntilRetirement(2007, 'Aerin'));
+console.log(yearsUntilRetirement(1944, 'Mama'));
+
