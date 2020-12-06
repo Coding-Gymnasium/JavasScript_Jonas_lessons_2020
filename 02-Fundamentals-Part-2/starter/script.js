@@ -43,7 +43,6 @@ const calcAge2 = function (birthYear) {
 
 const age2 = calcAge2(2005);
 console.log(age1, age2);
-*/
 
 // Arrow Function. 
 let year = new Date().getFullYear();
@@ -60,3 +59,16 @@ const yearsUntilRetirement = (birthYear, firstName) => {
 
 console.log(yearsUntilRetirement(1972, 'Nico')); // returns: Nico will be 65 in 17 years
 console.log(yearsUntilRetirement(2004, 'Noelle')); // returns: Noelle will be 65 in 49 years
+*/
+function cutFruitPieces(fruit) {
+  return fruit * 4;
+}
+
+function fruitProcessor(apples, oranges) {
+  const applePieces = cutFruitPieces(apples);
+  const orangePieces = cutFruitPieces(oranges);
+  const juice = `Juice with ${applePieces} pieces of apple and ${orangePieces} pieces of orange`
+  return juice;
+}
+
+console.log(fruitProcessor(2, 3));
