@@ -116,7 +116,7 @@ Hints:
 § To check if number A is at least double number B, check for A >= 2 * B.
 Apply this to the team's average scores 
 😉 GOOD LUCK 😀
-*/
+
 
 const calcAverage = (a, b, c) => ( a+ b + c) / 3;
 // console.log(calcAverage(3, 4, 5));
@@ -142,3 +142,78 @@ checkWinner(100, 50);
 scoreDolphins = calcAverage(85, 54, 41);
 scoreKoalas = calcAverage(23, 34, 27);
 checkWinner(scoreDolphins, scoreKoalas);
+
+
+// Arrays
+
+const friend1 = 'Michael';
+const friend2 = 'Steven';
+const friend3 = 'Peter';
+
+const friends = [ 'Michael', 'Steven', 'Peter' ];
+console.log(friends);
+
+const years = new Array(1991, 1884, 2008, 2020);
+
+console.log(years);
+
+console.log(friends[0]);
+console.log(friends[2]);
+console.log(friends.length);
+console.log(friends[friends.length - 1]);
+
+friends[2] = 'Jay';
+console.log(friends);
+
+console.log(friend1); // still Michael
+
+const firstName = 'Jonas'
+const jonas = [firstName, 'Schmedtmann', 2037 - 1991, 'teacher', friends];
+console.log(jonas);
+
+// Exercise
+const calcAge = function (birthYear) {
+  return 2020 - birthYear;
+}
+
+const years1 = [1990, 1967, 2002, 2010, 2018];
+// console.log(calcAge(years1)); // returns NaN
+// console.log(calcAge(years1[0]));
+
+for (let i = 0; i < years1.length; i++) {
+  console.log(calcAge(years1[i]));
+}
+*/
+// Add elements
+const friends = ['Michael', 'Steven', 'Peter'];
+const newlength = friends.push('Jay');
+console.log(friends);
+console.log(newlength); // using .push(arg) returns the new array lenght
+
+friends.unshift('John');
+console.log(friends);
+
+// Remove elements
+
+friends.pop(); // removes the last element in the array
+const popped = friends.pop(); // the removed element can be saved to a variable
+console.log(friends);
+console.log(popped);
+
+friends.shift() // removes the first element
+console.log(friends);
+
+console.log(friends.indexOf('Steven')); // returns the index for the element 'Steve'
+
+friends.push(23);
+console.log(friends.includes('Steven')); // true
+console.log(friends.includes('Bob')); // false
+console.log(friends.includes('23')); // false
+console.log(friends.includes(23)); // true
+
+const friend = 'Steven'
+if (friends.includes(friend)) {
+  console.log(`You have a friends called ${friend}`);
+} else {
+  console.log('No such a friend');
+}
