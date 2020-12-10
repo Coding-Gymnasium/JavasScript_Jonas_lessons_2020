@@ -236,7 +236,6 @@ Hint:
 Remember that an array needs a value in each position, and that value can actually be the returned value of a function! 
 So you can just call a function as array values (so don't store the tip values in separate variables first, but right in the new array) 😉
 GOOD LUCK 😀
-*/
 
 // function calcTip(billValue) {
 //   if(billValue >= 50 && billValue <= 300) {
@@ -268,3 +267,16 @@ for (let i = 0; i < bills.length; i++) {
   total.push(bills[i] + tips[i]);
 }
 console.log(total);
+*/
+
+// Objects
+
+const jonas = {
+  firstName: 'Jonas',
+  lastName: "Schmedtmann",
+  age: new Date().getFullYear() - 1991,
+  job: 'teacher',
+  friends: ['Michael', 'Peter', 'Steven']
+}
+// the above object 'jonas' has 5 properties. Each of them a key/value pair
+console.log(jonas);
