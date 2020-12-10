@@ -280,3 +280,33 @@ const jonas = {
 }
 // the above object 'jonas' has 5 properties. Each of them a key/value pair
 console.log(jonas);
+
+console.log(jonas.age);
+console.log(jonas.firstName);
+console.log(jonas.lastName);
+console.log(jonas.job);
+console.log(jonas.friends);
+
+console.log(jonas['firstName']);
+console.log(jonas['lastName']);
+console.log(jonas['age']);
+console.log(jonas['job']);
+console.log(jonas['friends']);
+
+const nameKey = 'Name';
+console.log(jonas['first' + nameKey]);
+console.log(jonas['last' + nameKey]);
+
+// const interestedIn = prompt('What do you want to know about Jonas? Choose between firstName, lastName, age, job, and friends')
+
+// if(jonas[interestedIn]){
+//   console.log(jonas[interestedIn]);
+// } else {
+//   console.log('Wrong request! Choose between firstName, lastName, age, job, and friends');
+// }
+
+jonas.location = 'Portugal';
+jonas['twitter'] = '@jonasschmedtman';
+console.log(jonas);
+
+console.log(`${jonas.firstName} has ${jonas.friends.length} friends and his best friends is ${jonas.friends[0]}`);
