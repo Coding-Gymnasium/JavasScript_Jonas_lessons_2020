@@ -267,7 +267,6 @@ for (let i = 0; i < bills.length; i++) {
   total.push(bills[i] + tips[i]);
 }
 console.log(total);
-*/
 
 // Objects
 
@@ -310,3 +309,39 @@ jonas['twitter'] = '@jonasschmedtman';
 console.log(jonas);
 
 console.log(`${jonas.firstName} has ${jonas.friends.length} friends and his best friends is ${jonas.friends[0]}`);
+*/
+
+const jonas = {
+  firstName: 'Jonas',
+  lastName: "Schmedtmann",
+  birthYear: 1991,
+  job: 'teacher',
+  friends: ['Michael', 'Peter', 'Steven'],
+  hasDriversLicense: true,
+  // calcAge: function (birthYear) {
+  //   return new Date().getFullYear() - birthYear;
+  // }
+  // calcAge: function () {
+  //   return new Date().getFullYear() - this.birthYear; // 'this' is equivalent to 'self' in ruby
+  // }
+  calcAge: function () {
+    this.age = new Date().getFullYear() - this.birthYear;
+    return this.age; // we store it to a new property. In this case 'age'
+  },
+  summary: function() {
+    return `${this.firstName} is a ${this.calcAge()}-years old ${this.job} and has ${this.hasDriversLicense ? "a" : "no"} driver's license`
+  }
+}
+// console.log(jonas.calcAge(jonas.birthYear));
+// console.log(jonas['calcAge'](1991));
+console.log(jonas.calcAge());
+console.log(jonas.age);
+
+// challenge
+// "Jonas is a 29-year old teacher and he has a drivers license"
+console.log(jonas.summary());
+
+function getSummary(name) {
+  return `${name.firstName} is a ${name.age}-years old ${name.job} and has ${name.hasDriversLicense ? "a" : "no"} driver's license`
+}
+console.log(getSummary(jonas));
