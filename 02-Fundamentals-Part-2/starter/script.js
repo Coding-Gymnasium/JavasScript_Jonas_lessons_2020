@@ -366,7 +366,7 @@ Marks weights 78 kg and is 1.69 m tall.
 John weights 92 kg and is 1.95 m tall.
 
 GOOD LUCK 😀
-*/
+
 
 const mark = {
   fullName: "Mark Miller",
@@ -396,3 +396,10 @@ console.log(john.mass);
 console.log(john.height);
 john.calcBMI();
 console.log(john.bmi);
+*/
+
+// For loop
+// for loop keeps running while the condition is true
+for(let rep = 1; rep <= 10; rep++) {
+  console.log(`Lifting weights repetition ${rep} 🏋🏻‍♀️`);
+}
