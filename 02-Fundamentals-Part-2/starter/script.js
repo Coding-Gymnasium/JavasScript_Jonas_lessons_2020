@@ -413,29 +413,41 @@ const jonas = [
   true
 ];
 
-const types = [];
-for(let i = 0; i < jonas.length; i++) {
-  console.log(jonas[i], typeof jonas[i]);
-  // types[i] = typeof jonas[i];
-  types.push(typeof jonas[i]);
-}
-console.log(types);
+// const types = [];
+// for(let i = 0; i < jonas.length; i++) {
+//   console.log(jonas[i], typeof jonas[i]);
+//   // types[i] = typeof jonas[i];
+//   types.push(typeof jonas[i]);
+// }
+// console.log(types);
 
-const years = [1991, 2007, 1969, 2020];
-const ages = [];
+// const years = [1991, 2007, 1969, 2020];
+// const ages = [];
 
-for (let i = 0; i < years.length; i++) {
-  ages.push(new Date().getFullYear() - years[i]);
-}
-console.log(ages);
-// Only strings
-for (let i = 0; i < jonas.length; i++) {
-  if(typeof jonas[i] !== 'string') continue;
-  console.log(jonas[i]);
+// for (let i = 0; i < years.length; i++) {
+//   ages.push(new Date().getFullYear() - years[i]);
+// }
+// console.log(ages);
+// // Only strings
+// for (let i = 0; i < jonas.length; i++) {
+//   if(typeof jonas[i] !== 'string') continue;
+//   console.log(jonas[i]);
+// }
+
+// // Break with number
+// for (let i = 0; i < jonas.length; i++) {
+//   if(typeof jonas[i] === 'number') break;
+//   console.log(jonas[i]);
+// }
+
+// iterate backwards
+for (let i = jonas.length - 1; i >= 0; i--) {
+  console.log(i, jonas[i]);
 }
 
-// Break with number
-for (let i = 0; i < jonas.length; i++) {
-  if(typeof jonas[i] === 'number') break;
-  console.log(jonas[i]);
+for (let exercise = 1; exercise < 4; exercise++) {
+  console.log(`--- Starting Exericse ${exercise} ---`);
+    for (let rep = 1; rep < 6; rep++) {
+      console.log(`Exercise ${exercise} repetition ${rep}`);;
+    }
 }
