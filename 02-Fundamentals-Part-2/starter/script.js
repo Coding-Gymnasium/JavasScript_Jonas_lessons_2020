@@ -441,13 +441,30 @@ const jonas = [
 // }
 
 // iterate backwards
-for (let i = jonas.length - 1; i >= 0; i--) {
-  console.log(i, jonas[i]);
+// for (let i = jonas.length - 1; i >= 0; i--) {
+//   console.log(i, jonas[i]);
+// }
+
+// for (let exercise = 1; exercise < 4; exercise++) {
+//   console.log(`--- Starting Exericse ${exercise} ---`);
+//     for (let rep = 1; rep < 6; rep++) {
+//       console.log(`Exercise ${exercise} repetition ${rep}`);;
+//     }
+// }
+
+// While loop
+let rep = 1;
+while (rep <= 10) {
+  console.log(`lifting weights repetition ${rep}`);
+  rep++;
 }
 
-for (let exercise = 1; exercise < 4; exercise++) {
-  console.log(`--- Starting Exericse ${exercise} ---`);
-    for (let rep = 1; rep < 6; rep++) {
-      console.log(`Exercise ${exercise} repetition ${rep}`);;
-    }
+let dice = Math.trunc(Math.random() * 6) + 1;
+
+while (dice !== 6) {
+  console.log(`You rolled a ${dice}`);
+  dice = Math.trunc(Math.random() * 6) + 1;
+  if(dice === 6) {
+    console.log("You got a six!");
+  }
 }
