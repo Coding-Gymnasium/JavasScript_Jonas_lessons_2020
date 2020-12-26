@@ -129,8 +129,12 @@ main {
   margin-right: 0.7rem;
 }
 
-.btn--new {
+.btn--switch {
   top: 4rem;
+  width: 250px;
+}
+.btn--new {
+  top: 10rem;
 }
 .btn--roll {
   top: 39.3rem;
