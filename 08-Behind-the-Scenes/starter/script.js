@@ -30,6 +30,7 @@ function calcAge(birthYear) {
   }
   printAge();
 
+  console.log(firstName);
   return age;
 }
 
