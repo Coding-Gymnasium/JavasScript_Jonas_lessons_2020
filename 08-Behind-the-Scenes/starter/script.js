@@ -84,6 +84,7 @@ console.log(y === window.y); // false
 console.log(z === window.z); // false
 */
 
+/*
 console.log(this);
 
 const calcAge = function (birthYear) {
@@ -128,3 +129,84 @@ calling f in the console displays
   console.log(2037 - this.year);
 }
 */
+
+// var firstName = 'Matilda'; // one shouldn't use var.
+
+// const jonas = {
+//   firstName: 'Jonas',
+//   year: 1991,
+//   calcAge: function () {
+//     console.log(this);
+//     console.log(2037 - this.year);
+//   },
+//   greet: () => console.log(`Hey ${this.firstName}`), // one shouldn't use an arrow function as a method.
+// };
+
+// jonas.greet(); // returns 'Hey undefined' because this is used in an arrow function and that makes it use the this keyword from the global scope - undefined in this case. When added "var firstName = 'Matilda'" it uses Matilda for firstName
+
+// const jonas = {
+//   firstName: 'Jonas',
+//   year: 1991,
+//   calcAge: function () {
+//     console.log(this);
+//     console.log(2037 - this.year);
+//   },
+//   greet: function () {
+//     console.log(this);
+//     console.log(`Hey ${this.firstName}`);
+//   },
+// };
+
+// jonas.greet();
+
+const jonas = {
+  firstName: 'Jonas',
+  year: 1991,
+  calcAge: function () {
+    // console.log(this);
+    console.log(2037 - this.year);
+
+    // // Solution #1
+
+    //   const self = this;
+    //   const isMillenial = function () {
+    //     // console.log(this);
+    //     console.log(self); // self or that
+    //     // console.log(this.year >= 1981 && this.year <= 1996);
+    //     console.log(self.year >= 1981 && self.year <= 1996);
+    //   };
+    //   isMillenial();
+    // },
+
+    // Solution 2
+    const isMillenial = () => {
+      // this arrow function uses the 'this' keyword from the parent scope.
+      console.log(this);
+      console.log(this.year >= 1981 && this.year <= 1996);
+    };
+    isMillenial();
+  },
+
+  greet: function () {
+    console.log(this);
+    console.log(`Hey ${this.firstName}`);
+  },
+};
+
+jonas.greet();
+jonas.calcAge();
+
+// Arguments keyword
+
+const addExpr = function (a, b) {
+  console.log(arguments);
+  return a + b;
+};
+addExpr(2, 5);
+addExpr(2, 5, 8, 12);
+
+// const addArrow = (a, b) => {  // arrow function don't have the arguments keyword
+//   console.log(arguments);
+//   a + b;
+// };
+// addArrow(2, 5, 8);
