@@ -35,8 +35,59 @@ const restaurant = {
       `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delieverd to ${address} at ${time}`
     );
   },
+
+  oderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
+    );
+  },
 };
 
+const arr = [7, 8, 9];
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]]; // bad way to do it
+console.log(badNewArr);
+
+// spread operator
+const newArr = [1, 2, ...arr];
+console.log(newArr); // [1, 2, 7, 8, 9]
+
+console.log(...newArr); // 1 2 7 8 9
+
+const newMenu = [...restaurant.mainMenu, 'Gnochi']; // builds a new array from scratch. #=> ["Pizza", "Pasta", "Risotto", "Gnochi"]
+console.log(newMenu);
+
+// copy array
+const mainMenuCopy = [...restaurant.mainMenu];
+console.log(mainMenuCopy);
+
+// Join 2 Arrays
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(menu); //  ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad", "Pizza", "Pasta", "Risotto"]
+
+// Iterables: array, strings, maps, sets. Not objects
+const str = 'Jonas';
+const letters = [...str, ' ', 'S.'];
+console.log(letters); // ["J", "o", "n", "a", "s", " ", "S."]
+
+const ingredients = [
+  prompt("let's make pasta! Ingredient 1?"),
+  prompt('Ingredient 2?'),
+  prompt('Ingredient 3?'),
+];
+console.log(ingredients);
+// restaurant.oderPasta(ingredients[0], ingredients[1], ingredients[2]) // inefficient way
+// with spread operator:
+restaurant.oderPasta(...ingredients); // here is your delicious pasta with tomato, cheese and ham
+
+// Objects
+const newRestaurant = { foundedIn: 1998, ...restaurant, founder: 'Guiseppe' };
+console.log(newRestaurant);
+
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = 'Ristorante Roma';
+console.log(restaurant.name);
+console.log(restaurantCopy.name);
+/*
 restaurant.oderDelivery({
   time: '22:30',
   address: 'Via del Sole, 21',
