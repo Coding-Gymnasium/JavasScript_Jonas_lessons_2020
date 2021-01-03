@@ -157,6 +157,7 @@ calling f in the console displays
 //   },
 // };
 
+/*
 // jonas.greet();
 
 const jonas = {
@@ -210,3 +211,21 @@ addExpr(2, 5, 8, 12);
 //   a + b;
 // };
 // addArrow(2, 5, 8);
+*/
+
+let age = 30;
+let oldAge = age;
+age = 31;
+console.log(age);
+console.log(oldAge);
+
+const me = {
+  name: 'Jonas',
+  age: 30,
+};
+
+const friend = me;
+friend.age = 27;
+
+console.log('Friend:', friend);
+console.log('Me:', me);
