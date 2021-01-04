@@ -36,18 +36,65 @@ const restaurant = {
     );
   },
 
-  oderPasta: function (ing1, ing2, ing3) {
+  orderPasta: function (ing1, ing2, ing3) {
     console.log(
       `here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
     );
   },
+
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient, otherIngredients);
+  },
 };
 
+//// Rest pattern and parameters
+//// spread operator unpacks elements from an array, while Rest packs elements into an array
+
+//// 1) Destructuring:
+//// SPREAD, because on the RIGHT side of = sign
+const arr = [1, 2, ...[3, 4]];
+
+//// REST, because on the LEFT side of the equal sign
+const [a, b, ...others] = [1, 2, 3, 4, 5]; // in this case collects the unused elements in the destructuring assigment
+console.log(a, b, others);
+
+const [pizza, , risotto, ...otherFood] = [
+  // rest element must be the last element and there can be only one
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+console.log(pizza, risotto, otherFood);
+
+// REST pattern with objects
+
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
+
+//// 2) Functions
+const add = function (...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+  console.log(sum);
+};
+add(2, 3);
+add(5, 3, 7, 2);
+add(8, 2, 5, 3, 2, 1, 4);
+
+const x = [23, 5, 7];
+add(...x); // with spread we unpack the values
+
+restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach'); // mushrooms (3) ["onion", "olives", "spinach"]
+restaurant.orderPizza('mushrooms'); // mushrooms []
+
+/*
+///////////////////////////////////////////
+// spread operator
 const arr = [7, 8, 9];
 const badNewArr = [1, 2, arr[0], arr[1], arr[2]]; // bad way to do it
 console.log(badNewArr);
 
-// spread operator
 const newArr = [1, 2, ...arr];
 console.log(newArr); // [1, 2, 7, 8, 9]
 
@@ -69,16 +116,19 @@ const str = 'Jonas';
 const letters = [...str, ' ', 'S.'];
 console.log(letters); // ["J", "o", "n", "a", "s", " ", "S."]
 
+/* Commented out TEMPORARILY to mute the prompts
+
 const ingredients = [
   prompt("let's make pasta! Ingredient 1?"),
   prompt('Ingredient 2?'),
   prompt('Ingredient 3?'),
 ];
 console.log(ingredients);
-// restaurant.oderPasta(ingredients[0], ingredients[1], ingredients[2]) // inefficient way
+// restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]) // inefficient way
 // with spread operator:
-restaurant.oderPasta(...ingredients); // here is your delicious pasta with tomato, cheese and ham
-
+restaurant.orderPasta(...ingredients); // here is your delicious pasta with tomato, cheese and ham
+*/
+/*
 // Objects
 const newRestaurant = { foundedIn: 1998, ...restaurant, founder: 'Guiseppe' };
 console.log(newRestaurant);
