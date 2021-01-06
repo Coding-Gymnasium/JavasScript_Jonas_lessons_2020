@@ -47,6 +47,26 @@ const restaurant = {
   },
 };
 
+//////////////////////////////////////
+// For Of Loop
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu) console.log(item);
+
+// for (const item of menu.entries()) {
+//   console.log(item);
+// } // each item will print as an array with the index and name as elements
+
+for (const item of menu.entries()) {
+  console.log(`${item[0] + 1}: ${item[1]}`); // 1: Focaccia, etc
+}
+
+// with deconstruction
+for (const [i, el] of menu.entries()) {
+  console.log(`${i + 1}: ${el}`); // 1: Focaccia, etc
+}
+
+/*
 restaurant.numGuests = 0;
 const guests = restaurant.numGuests || 10;
 console.log(guests);
@@ -54,7 +74,7 @@ console.log(guests);
 // Nullish: null and undefined ( NOT 0 or '')
 const guestCorrect = restaurant.numGuests ?? 10;
 console.log(guestCorrect);
-
+*/
 /*
 ////////////////////////////////////////////////
 // Short Circuiting (&& and ||)
@@ -285,7 +305,7 @@ TEST DATA FOR 6: Use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'. Th
 
 GOOD LUCK 😀
 */
-
+/*
 const game = {
   team1: 'Bayern Munich',
   team2: 'Borrussia Dortmund',
@@ -352,3 +372,4 @@ printGoals(...game.scored);
 // 7. The team with the lower odd is more likely to win. Print to the console which team is more likely to win, WITHOUT using an if/else statement or the ternary operator.
 team1 < team2 && console.log('Team 1 more likely to win');
 team1 > team2 && console.log('Team 2 more likely to win');
+*/
