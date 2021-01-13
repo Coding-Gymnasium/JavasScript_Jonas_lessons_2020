@@ -47,6 +47,7 @@ const restaurant = {
   },
 };
 
+/*
 // Property Names
 const properties = Object.keys(openingHours);
 console.log(properties);
@@ -74,7 +75,7 @@ console.log(entries);
 for (const [day, { open, close }] of entries) {
   console.log(`On ${day} we open at ${open} and close at ${close}`);
 }
-
+*/
 /*
 /////////////////
 // Optional Chaining
@@ -368,7 +369,7 @@ TEST DATA FOR 6: Use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'. Th
 
 GOOD LUCK 😀
 */
-/*
+
 const game = {
   team1: 'Bayern Munich',
   team2: 'Borrussia Dortmund',
@@ -409,7 +410,7 @@ const game = {
     team2: 6.5,
   },
 };
-
+/*
 // 1. Create one player array for each team (variables 'players1' and 'players2')
 const [players1, players2] = game.players;
 console.log(players1, players2);
@@ -436,3 +437,75 @@ printGoals(...game.scored);
 team1 < team2 && console.log('Team 1 more likely to win');
 team1 > team2 && console.log('Team 2 more likely to win');
 */
+
+///////////////////////////////////////
+// Coding Challenge #2
+
+/* 
+Let's continue with our football betting app!
+
+1. Loop over the game.scored array and print each player name to the console, along with the goal number (Example: "Goal 1: Lewandowski")
+2. Use a loop to calculate the average odd and log it to the console (We already studied how to calculate averages, you can go check if you don't remember)
+3. Print the 3 odds to the console, but in a nice formatted way, exaclty like this:
+      Odd of victory Bayern Munich: 1.33
+      Odd of draw: 3.25
+      Odd of victory Borrussia Dortmund: 6.5
+Get the team names directly from the game object, don't hardcode them (except for "draw"). HINT: Note how the odds and the game objects have the same property names 😉
+
+BONUS: Create an object called 'scorers' which contains the names of the players who scored as properties, and the number of goals as the value. In this game, it will look like this:
+      {
+        Gnarby: 1,
+        Hummels: 1,
+        Lewandowski: 2
+      }
+
+GOOD LUCK 😀
+*/
+// 1. SOLVED
+const scoringPlayers = Object.values(game.scored);
+
+for (let index = 0; index < scoringPlayers.length; index++) {
+  console.log(`Goal ${index + 1}: ${scoringPlayers[index]}`);
+}
+// Jonas Solution
+for (const [index, player] of game.scored.entries())
+  console.log(`Goal ${index + 1}: ${player}`);
+
+// 2. SOlVED
+const odds = Object.values(game.odds);
+let sum = 0;
+for (let index = 0; index < odds.length; index++) {
+  sum += odds[index];
+}
+const oddsAverage = Math.floor(sum / odds.length);
+console.log(oddsAverage);
+// Jonas Solution
+
+let average = 0;
+for (const odd of odds) average += odd;
+average /= odds.length;
+console.log(average);
+
+// 3.
+// teams are the first two elements of the object
+
+const teams = {
+  team1: game.team1,
+  team2: game.team2,
+  x: 'Draw',
+};
+console.log(teams);
+
+for (const [key, value] of Object.entries(teams)) {
+  console.log(`${key}: ${value}`);
+}
+for (const [key, value] of Object.entries(game.odds)) {
+  console.log(`${key}: ${value}`);
+}
+
+// Jonas Solution
+
+for (const [team, odd] of Object.entries(game.odds)) {
+  const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
+  console.log(`Odd of ${teamStr}: ${odd}`);
+}
