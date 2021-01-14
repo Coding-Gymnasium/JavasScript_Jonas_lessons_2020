@@ -461,6 +461,7 @@ BONUS: Create an object called 'scorers' which contains the names of the players
 
 GOOD LUCK 😀
 */
+/*
 // 1. SOLVED
 const scoringPlayers = Object.values(game.scored);
 
@@ -509,3 +510,49 @@ for (const [team, odd] of Object.entries(game.odds)) {
   const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
   console.log(`Odd of ${teamStr}: ${odd}`);
 }
+*/
+
+const ordersSet = new Set([
+  'Pasta',
+  'Pizza',
+  'Pizza',
+  'Risotto',
+  'Pasta',
+  'Pizza',
+]);
+
+console.log(ordersSet); // > Set(3) {"Pasta", "Pizza", "Risotto"}
+
+console.log(new Set('Jonas')); // > Set(5) {"J", "o", "n", "a", "s"}
+
+console.log(ordersSet.size); // > 3
+console.log(ordersSet.has('Pizza')); // > true
+console.log(ordersSet.has('Bread')); // > false
+ordersSet.add('Garlic Bread');
+console.log(ordersSet); // > Set(4) {"Pasta", "Pizza", "Risotto", "Garlic Bread"}
+ordersSet.delete('Risotto');
+console.log(ordersSet); // > Set(4) {"Pasta", "Pizza", "Garlic Bread"}
+
+console.log(ordersSet[0]); // doesn't work. It's 'undefined'
+
+// ordersSet.clear(); // > Set(0) {}
+// console.log(ordersSet);
+
+// sets are iterables
+for (const order of ordersSet) console.log(order);
+
+// Example
+
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+// we want a set with unique elements
+const staffUnique = new Set(staff);
+console.log(staffUnique); // > Set(3) {"Waiter", "Chef", "Manager"}
+
+// if we want an array
+const staffUniqueArray = [...new Set(staff)];
+console.log(staffUniqueArray); // > (3) ["Waiter", "Chef", "Manager"]
+
+// to know the size
+console.log(new Set(staff).size); // 3
+
+console.log(new Set('Nicolas').size); // 7
