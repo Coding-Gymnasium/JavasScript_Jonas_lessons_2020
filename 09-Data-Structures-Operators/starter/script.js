@@ -512,6 +512,12 @@ for (const [team, odd] of Object.entries(game.odds)) {
 }
 */
 
+// New javaScript data structures
+
+////////////////////////////////////
+// Sets
+
+/*
 const ordersSet = new Set([
   'Pasta',
   'Pizza',
@@ -556,3 +562,42 @@ console.log(staffUniqueArray); // > (3) ["Waiter", "Chef", "Manager"]
 console.log(new Set(staff).size); // 3
 
 console.log(new Set('Nicolas').size); // 7
+*/
+
+// Maps
+
+const rest = new Map();
+rest.set('name', 'Classico Italiano');
+rest.set(1, 'Firenze, Italy');
+rest.set(2, 'Lisbon, Portugal');
+console.log(rest.set(2, 'Lisbon, Portugal')); //> Map(3) {"name" => "Classico Italiano", 1 => "Firenze, Italy", 2 => "Lisbon, Portugal"}
+
+rest
+  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'We are open')
+  .set(false, 'We are closed');
+
+console.log(rest.get('name')); // Classico Italiano
+console.log(rest.get(true)); // true
+console.log(rest.get(1)); // 'Firenze, Italy'
+
+const time = 21;
+console.log(rest.get(time > rest.get('open') && time < rest.get('close'))); // We are open
+
+console.log(rest.has('categories')); // true
+rest.delete(2);
+console.log(rest); // location 2 is gone
+console.log(rest.size); // 7
+
+rest.set([1, 2], 'Test'); // using the array as the key and the string as the value. However we can't call the key [1,2] because is an object. We could use it if we assing it, for example: const arr = [1, 2]; rest.set(arr, 'Test'). Now if we call arr we get 'Test'
+
+const arr1 = [1, 2];
+rest.set(arr1, 'Test1');
+console.log(rest.get(arr1));
+
+rest.set(document.querySelector('h1'), 'Heading');
+
+console.log(rest);
+console.log(rest.size);
