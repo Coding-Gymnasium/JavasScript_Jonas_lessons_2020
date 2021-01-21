@@ -652,7 +652,7 @@ Let's continue with our football betting app! This time, we have a map with a lo
 
 GOOD LUCK 😀
 */
-
+/*
 const gameEvents = new Map([
   [17, '⚽️ GOAL'],
   [36, '🔁 Substitution'],
@@ -688,3 +688,45 @@ for (const [min, event] of gameEvents) {
   const half = min <= 45 ? 'FIRST' : 'SECOND';
   console.log(`[${half} HALF] ${min}: ${event}`);
 }
+*/
+
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+console.log(plane[0]);
+console.log(plane[1]);
+console.log(plane[2]);
+console.log('B737'[0]); // B
+
+console.log(airline.length); // 16
+console.log('B737'.length); // 4
+
+console.log(airline.indexOf('r')); // 6
+console.log(airline.lastIndexOf('r')); // 10 (the 'r' in Portugal)
+console.log(airline.indexOf('Portugal')); // 8
+console.log(airline.indexOf('portugal')); // -1 because it doesn't exist
+
+console.log(airline.slice(4)); // 4 is the position where the slice starts. We get the substring Air Portugal. The original string remains intact.
+
+console.log(airline.slice(4, 7)); // Air. 4 is the beggining index and 7 the stop. It doesn't include index 7
+
+console.log(airline.slice(0, airline.indexOf(' '))); // Tap
+console.log(airline.slice(0, airline.lastIndexOf(' ') + 1)); // Tap Air
+
+console.log(airline.slice(-2)); // al
+console.log(airline.slice(8, -2)); // Portug
+
+// Example
+const checkMiddleSeat = function (seat) {
+  // B and E aer middle seats
+  const s = seat.slice(-1);
+  if (s === 'B' || s === 'E') console.log('You got the middle seat 😬');
+  else console.log('You got lucky! 😎');
+};
+
+checkMiddleSeat('11B'); // You got the middle seat 😬
+checkMiddleSeat('32C'); // You got lucky! 😎
+checkMiddleSeat('3E'); // You got the middle seat 😬
+
+// Whe we use methods on a String javaScript converts it behind the scenes into an array and the run the methods on that.
+console.log(new String('Jonas'));
+console.log(typeof new String('Jonas').slice(1));
