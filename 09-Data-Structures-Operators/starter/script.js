@@ -689,7 +689,7 @@ for (const [min, event] of gameEvents) {
   console.log(`[${half} HALF] ${min}: ${event}`);
 }
 */
-
+/*
 const airline = 'TAP Air Portugal';
 const plane = 'A320';
 console.log(plane[0]);
@@ -730,3 +730,76 @@ checkMiddleSeat('3E'); // You got the middle seat 😬
 // Whe we use methods on a String javaScript converts it behind the scenes into an array and the run the methods on that.
 console.log(new String('Jonas'));
 console.log(typeof new String('Jonas').slice(1));
+*/
+
+const airline = 'TAP Air Portugal';
+
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+
+// fix capitalization in name
+const passenger = 'JonAS'; // should be Jonas
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect);
+
+const passengerCorrectFunction = name => {
+  const nameLower = name.toLowerCase();
+  const nameFix = nameLower[0].toUpperCase() + nameLower.slice(1);
+  console.log(nameFix);
+};
+
+passengerCorrectFunction('NIco');
+passengerCorrectFunction('ELIZabeth');
+
+// Comparing emails
+
+const email = 'hello@jonas.io';
+const loginEmail = '  Hello@Jonas.Io \n';
+
+// const lowerEmail = loginEmail.toLowerCase();
+// const trimmedEmail = lowerEmail.trim();
+// console.log(trimmedEmail); // 'hello@jonas.io';
+
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail); // 'hello@jonas.io';
+console.log(email === normalizedEmail);
+
+// replacing
+const priceGB = '288,97￡';
+const priceUS = priceGB.replace('￡', '$').replace(',', '.');
+console.log(priceUS);
+
+const announcement = ' All passengers come to boarding door 23. Boarding door 23!'.trimStart();
+console.log(announcement.replaceAll('door', 'Gate'));
+
+// or using a regular expression
+console.log(announcement.replace(/door/g, 'Gate'));
+
+// Booleans
+const plane = 'A320neo';
+console.log(plane.includes('A320')); // true
+console.log(plane.includes('Boeing')); // false
+console.log(plane.startsWith('Air')); // false
+console.log(plane.startsWith('A')); // true
+
+const plane1 = 'Airbus A320neo';
+if (plane1.startsWith('Airbus') && plane1.endsWith('neo')) {
+  console.log('Part of the New Airbus family');
+}
+
+// Practice exercise
+
+const checkBaggage = function (items) {
+  const baggage = items.toLowerCase();
+  if (baggage.includes('knife') || baggage.includes('gun')) {
+    console.log('You are not allowed on board');
+  } else {
+    console.log('Welcome aboard');
+  }
+};
+
+checkBaggage('I have a laptop, some Food and a pocket Knife');
+checkBaggage('Socks and camera');
+checkBaggage('Got some snacks and a gun for protection');
