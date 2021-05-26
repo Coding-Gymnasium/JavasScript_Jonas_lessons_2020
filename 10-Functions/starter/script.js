@@ -3,7 +3,7 @@
 /*
 const bookings = [];
 
-const createBooking = unction (flightNum, numPassengers = 1, price = 199 * numPassengers) {
+const createBooking = function (flightNum, numPassengers = 1, price = 199 * numPassengers) {
 		//ES5
 		//numPassengers = numPassengers || 1;
 		//price = price || 199;
@@ -89,9 +89,9 @@ document.body.addEventListener('click', high5);
 
 
 const greet = function (greeting) {
-				return function (name) {
-								console.log(`${greeting} ${name}`);
-				};
+	return function (name) {
+		console.log(`${greeting} ${name}`);
+	};
 };
 
 const greeterHey = greet('Hey');
