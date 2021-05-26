@@ -23,3 +23,9 @@ for(let i = 0; i < btnsOpenModal.length; i++) {
 btnCloseModal.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
 
+document.addEventListener('keydown', (e) => {
+  //console.log(`${e.keyCode} was pressed`);
+  //console.log(`${e.key} was pressed`);
+  e.keyCode === 27 && !modal.classList.contains('hidden') && closeModal();
+});
+
