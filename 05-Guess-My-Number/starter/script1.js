@@ -2,6 +2,7 @@
 
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
+let highscore = 0;
 
 document.querySelector('.again').addEventListener('click', () => {
 //  window.location.reload();
@@ -20,8 +21,8 @@ const miss = () => {
     score--; 
     document.querySelector('.score').textContent = score;
   } else {
-    document.querySelector('.message').textContent = 'Game Over!';
-  document.querySelector('body').style.backgroundColor = 'red';
+    document.querySelector('.message').textContent = '💀👎 You Lost!';
+  document.querySelector('body').style.backgroundColor = '#8B0000';
     document.querySelector('.score').textContent = 0;
   }
 }
@@ -33,7 +34,10 @@ document.querySelector('.check').addEventListener('click', function() {
   } else if (guess === secretNumber) {
 document.querySelector('.number').textContent = secretNumber;
     document.querySelector('.message').textContent = 'Correct!';
-    document.querySelector('.highscore').textContent = score;
+    if (score > highscore) {
+      highscore = score;
+      document.querySelector('.highscore').textContent = highscore;
+    }
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').style.width = '30rem';
   } else if (guess > secretNumber) {
