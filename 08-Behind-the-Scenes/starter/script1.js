@@ -77,6 +77,7 @@ const f = jonas.calcAge;
 f(); // this keyword now is undefined because it's not attached to any object.
 */
 
+/*
 const jonas = {
   firstName: 'Jonas',
   thisYear: new Date().getFullYear(),
@@ -125,3 +126,64 @@ var addArrow = (a, b) => {
 };
 
 addArrow(2, 5, 8);
+*/
+
+// Primitives vs Objects
+//
+let age = 30;
+let oldAge = age;
+age = 31;
+console.log(age);
+console.log(oldAge);
+
+const me = {
+  name: 'Jonas',
+  age: 30,
+};
+
+const friend = me;
+friend.age = 27;
+
+console.log(me);
+console.log('Friend:', friend);
+
+// Primitive Types
+let lastName = 'Williams';
+let oldLastName = lastName;
+lastName = 'Davis';
+console.log(lastName, oldLastName);
+
+// Reference types
+const jessica = {
+  fistName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+};
+
+const marriedJessica = jessica;
+marriedJessica.lastName = 'Davis'; // this actually changes the original variable lastName.
+console.log('Before marriage', jessica);
+console.log('After marriage', marriedJessica);
+// Both jessica and marriedJessica point to the same memory address in the Heap.
+
+// Copying objects
+
+const jessica2 = {
+  fistName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+  family: ['Alice', 'Bob'],
+};
+
+const jessicaCopy = Object.assign({}, jessica2); // this creates a shallow copy. Not a deep clone.
+
+jessicaCopy.lastName = 'Davis';
+console.log('Before marriage', jessica2);
+console.log('Before marriage', jessicaCopy);
+
+jessicaCopy.family.push('Paula');
+jessicaCopy.family.push('John');
+
+console.log('Before marriage', jessica2); // the original got modified. Instead of just the jessicaCopy object.
+console.log('Before marriage', jessicaCopy);
+
