@@ -1,5 +1,6 @@
 'use strict'
 
+/*
 function calcAge(birthYear) {
   const age = new Date().getFullYear() - birthYear;
 
@@ -33,4 +34,43 @@ function calcAge(birthYear) {
 
 const firstName = 'Nico';
 calcAge(1972);
+*/
+
+console.log(this);
+
+const calcAge = function (birthYear) {
+  console.log(new Date().getFullYear() - birthYear);
+  console.log(this);
+};
+
+calcAge(1991);
+
+const calcAgeArrow = (birthYear) => {
+  console.log(new Date().getFullYear() - birthYear);
+  console.log(this);// Arrow function uses the 'this' keyword from the parent scope. In this case window.
+};
+
+calcAgeArrow(1991);
+
+const jonas = {
+  year: 1972,
+  thisYear: new Date().getFullYear(),
+  calcAge: function() {
+    console.log(this);
+    console.log( this.thisYear - this.year);
+  },
+};
+jonas.calcAge();
+
+const matilda = {
+  thisYear: new Date().getFullYear(),
+  year: 2017,
+};
+
+matilda.calcAge = jonas.calcAge; // method borrowing
+
+matilda.calcAge(); // 4 
+
+const f = jonas.calcAge;
+f(); // this keyword now is undefined because it's not attached to any object.
 
