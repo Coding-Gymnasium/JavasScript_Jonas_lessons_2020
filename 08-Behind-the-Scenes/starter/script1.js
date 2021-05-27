@@ -36,6 +36,8 @@ const firstName = 'Nico';
 calcAge(1972);
 */
 
+// This keyword
+/*
 console.log(this);
 
 const calcAge = function (birthYear) {
@@ -73,4 +75,53 @@ matilda.calcAge(); // 4
 
 const f = jonas.calcAge;
 f(); // this keyword now is undefined because it's not attached to any object.
+*/
 
+const jonas = {
+  firstName: 'Jonas',
+  thisYear: new Date().getFullYear(),
+  year: 1991,
+  calcAge: function () {
+    console.log(this.thisYear - this.year);
+
+    // ==== Solution One
+
+    // const self = this; // self or that. Capture 'this' by assigning it, and then using it inside the function. Pre ES6 solution.
+
+    // const isAKid = function () {
+    //   console.log(self);
+    //   console.log((self.thisYear - self.year) <= 13 ? 'Is a kid' : 'Not a kid')
+    // };
+    // isAKid();
+
+    // ===== Solution Two
+
+    const isAKid =  () => {
+      console.log(this);
+      console.log((this.thisYear - this.year) <= 13 ? 'Is a kid' : 'Not a kid')
+    };
+    isAKid();
+  },
+  greet: function() {
+    console.log(`Hey ${this.firstName}`)
+  },
+}
+
+jonas.greet();
+jonas.calcAge();
+
+// arguments keyword
+
+const addExpr = function (a, b) {
+  console.log(arguments);
+  return a + b;
+};
+
+addExpr(2, 5, 12); // I can add extra arguments even though the are not named.
+
+var addArrow = (a, b) => {
+  console.log(arguments); // arguments keyword doesn't exist in arrow functions.
+  return a + b;
+};
+
+addArrow(2, 5, 8);
