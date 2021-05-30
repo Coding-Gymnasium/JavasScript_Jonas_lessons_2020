@@ -31,8 +31,59 @@ const restaurant = {
   orderDelivery: function ({ starterIndex = 1, mainIndex = 0, time = '20:00', address }) {
     console.log(`Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`);
   },
-};
 
+  orderPasta: function(ing1, ing2, ing3) {
+    console.log(ing1, ing2, ing3)
+  },
+};
+///////////////////////////////////////////
+///////////////////////////////////////////
+
+// Spread Operator
+const arr = [7, 9, 9];
+
+const arrArr = [1, 2, arr] // returns arr inside the new array.
+const newArr = [1, 2, ...arr] // spreads arr into the new array. [1,2,7,8,9]
+console.log(newArr);
+
+console.log(...newArr); // 1 2 7 8 9
+
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+console.log(newMenu);
+
+// Copy Array
+const mainMenuCopy = [...restaurant.mainMenu];
+
+// Join two arrays
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(menu);
+
+// Iterables are arrays, strings, maps, sets, NOT objects.
+const str = 'Jonas';
+const letters = [...str, ' ', 'S.'];
+console.log(letters);
+
+// const ingredients =  [prompt(`Let's make pasta!  Ingredient 1?`),
+// prompt('Ingredient 2?'),
+// prompt('Ingredient 3?'),
+// ]; 
+// 
+// restaurant.orderPasta(...ingredients);
+
+// Objects
+// Spread operators works on objects too. Eventhough they are not iterable
+
+const newRestaurant = { foundedIn: 1998, ...restaurant, founder: 'Giuseppe' };
+
+console.log(newRestaurant);
+
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = 'Ristorante Roma';
+console.log(restaurantCopy.name);
+console.log(restaurant.name);
+
+/*
+// Destructuring Objects
 restaurant.orderDelivery({
   time: '22:30',
   address: 'Via del sole, 21',
@@ -67,7 +118,7 @@ const obj = { a: 23, b:7, c: 14 };
 //nested object
 const { fri: { open, close } } = openingHours
 // console.log(open, close)
-
+*/
 
 /*
 const arr = [2,3,4];
