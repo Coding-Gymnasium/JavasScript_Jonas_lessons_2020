@@ -25,9 +25,6 @@ const restaurant = {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
 
-  //orderDelivery: function (obj) {
-  //  console.log(obj);
-  //},
   orderDelivery: function ({ starterIndex = 1, mainIndex = 0, time = '20:00', address }) {
     console.log(`Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`);
   },
@@ -45,6 +42,43 @@ const restaurant = {
 ///////////////////////////////////////////
 ///////////////////////////////////////////
 
+
+// Nullish coalescent operator '??'
+
+restaurant.numbGuests = 0;
+const guests = restaurant.numGuests || 10;
+console.log(guests); // 10
+
+// Nullish: null and undefined ( Not 0 or '')
+const guestCorrect = restaurant.numbGuests ?? 10;
+console.log(guestCorrect); // 0
+
+/*
+// Short Circuiting (&& and ||)
+
+// '||' operator
+// use ANY data type, return any data type, short-circuiting.
+console.log( 3 || 'Jonas'); // 3
+console.log( '' || 'Jonas'); // Jonas
+console.log( true || 0); // true
+console.log( undefined || null) // null
+console.log( undefined || 0 || '' || 'Hello' || 23 || null); // Hello
+
+restaurant.numGuests = 23;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+// restaurant.numGuests = 23;
+restaurant.numGuests = 0;
+const guests2 = restaurant.numGuests || 10
+console.log(guests2); // 10 because 0 is a falsy value.
+
+// '&&' operator
+console.log( 0 && 'Jonas'); // 0
+console.log( 7 && 'Jonas'); // Jonas
+console.log( 'Hello' && 23 && null && 'jonas'); // null
+*/
+/*
 // Destructuring
 // SPREAD because on RIGHT side of = (operator)
 const arr = [1, 2, ...[3, 4]];
@@ -77,7 +111,7 @@ add(...x);
 restaurant.orderPizza('mushrooms', 'onion', 'olives', 'ham', 'cheese');
 
 restaurant.orderPizza('ham');
-
+*/
 
 /*
 // Spread Operator
