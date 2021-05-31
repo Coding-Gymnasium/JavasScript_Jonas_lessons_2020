@@ -42,7 +42,7 @@ const restaurant = {
 ///////////////////////////////////////////
 ///////////////////////////////////////////
 
-
+/*
 // Nullish coalescent operator '??'
 
 restaurant.numbGuests = 0;
@@ -52,6 +52,7 @@ console.log(guests); // 10
 // Nullish: null and undefined ( Not 0 or '')
 const guestCorrect = restaurant.numbGuests ?? 10;
 console.log(guestCorrect); // 0
+*/
 
 /*
 // Short Circuiting (&& and ||)
