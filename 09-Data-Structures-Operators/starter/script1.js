@@ -1,39 +1,47 @@
 'use strict';
 
+const weekday = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+const  openingHours = {
+  thu: {
+    open: 12,
+    close: 22,
+  },
+  fri: {
+    open: 11,
+    close: 23,
+  },
+  sat: {
+    open: 0,
+    close: 24,
+  },
+};
+
+
 const restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0,
-      close: 24,
-    },
+  // openingHours: openingHours, // Pre ES6 way
+  openingHours, // ES6 way.
+  order(starterIndex, mainIndex){
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]]; // ES6 syntax
   },
+  //order: function(starterIndex, mainIndex){
+  //  return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  //}, Pre ES6 syntax
 
-  order: function(starterIndex, mainIndex){
-    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-  },
-
-  orderDelivery: function ({ starterIndex = 1, mainIndex = 0, time = '20:00', address }) {
+  orderDelivery({ starterIndex = 1, mainIndex = 0, time = '20:00', address }) {
     console.log(`Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`);
   },
 
-  orderPasta: function(ing1, ing2, ing3) {
+  orderPasta(ing1, ing2, ing3) {
     console.log(ing1, ing2, ing3)
   },
 
-  orderPizza: function(mainIngredient, ...otherIngredients) {
+  orderPizza(mainIngredient, ...otherIngredients) {
     console.log(mainIngredient);
     console.log(otherIngredients);
   },
@@ -42,6 +50,11 @@ const restaurant = {
 ///////////////////////////////////////////
 ///////////////////////////////////////////
 
+
+
+
+
+/*
 // For of loop
 const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 
@@ -58,7 +71,7 @@ for (const item of menu.entries()) {
 for (const [i, element] of menu.entries()) {
   console.log(`${i + 1}: ${element}`);
 }; // using destructuring
-
+*/
 
 /*
 // Nullish coalescent operator '??'
