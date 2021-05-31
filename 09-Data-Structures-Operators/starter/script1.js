@@ -42,6 +42,24 @@ const restaurant = {
 ///////////////////////////////////////////
 ///////////////////////////////////////////
 
+// For of loop
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu) console.log(item);
+for (const item of menu.entries()) {
+  console.log(item);
+}; // to obtain the index for each item. Returns an array with [index, element]
+
+for (const item of menu.entries()) {
+  console.log(`${item[0] + 1}: ${item[1]}`);
+};
+
+
+for (const [i, element] of menu.entries()) {
+  console.log(`${i + 1}: ${element}`);
+}; // using destructuring
+
+
 /*
 // Nullish coalescent operator '??'
 
