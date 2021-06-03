@@ -48,6 +48,38 @@ const restaurant = {
 ///////////////////////////////////////////
 ///////////////////////////////////////////
 
+// Sets
+
+const ordersSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Rissoto', 'Pasta', 'Pizza']);
+console.log(ordersSet); // Set(3) {"Pasta", "Pizza", "Rissoto"}
+
+console.log(new Set('Jonas')); // Set(5) {"J", "o", "n", "a", "s"} 
+
+console.log(ordersSet.size); // 3
+console.log(ordersSet.has('Pizza')); // true
+console.log(ordersSet.has('Bread')); // false
+ordersSet.add('Garlic Bread');
+ordersSet.add('Garlic Bread');
+console.log(ordersSet); // Set(4) {"Pasta", "Pizza", "Rissoto", "Garlic Bread"}
+ordersSet.delete('Rissoto');
+console.log(ordersSet); // Set(3) {"Pasta", "Pizza", "Garlic Bread"}
+// ordersSet.clear(); // Set(0) {}
+
+for(const order of ordersSet) console.log(order);
+
+// Example. Use sets to remove duplicates from an array.
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+
+const staffUnique = new Set(staff);
+console.log(staffUnique); //Set(3) {"Waiter", "Chef", "Manager"}
+const staffUnique1 = [...new Set(staff)];;
+console.log(staffUnique1); // (3) ["Waiter", "Chef", "Manager"]
+
+console.log(new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size);
+
+console.log(new Set('jonasschmedtmann').size);
+
+/*
 // Property Names
 
 const properties = Object.keys(openingHours);
@@ -71,6 +103,8 @@ const entries = Object.entries(openingHours);
 for(const [key, {open, close}]  of entries) {
   console.log(`On ${key} we open at ${open} and close at ${close}`);
 }
+*/
+
 /*
 if( restaurant.openingHours && restaurant.openingHours.mon) {
 console.log(restaurant.openingHours.mon.open);
