@@ -47,7 +47,69 @@ const restaurant = {
 
 ///////////////////////////////////////////
 ///////////////////////////////////////////
+// String Part 3
+// Split
 
+const arr = 'a+very+nice+string'.split('+');
+console.log(arr);
+console.log(arr.join(' '));
+
+console.log('Jonas Schmedtmann'.split(' '));
+
+const [firstName, lastName] = 'Jonas Schmedtman'.split(' ');
+
+const newName = ['Mr.', firstName, lastName.toUpperCase()].join('_');
+console.log(newName);
+
+// const capitalizeName = function(name){
+//   const names = name.split(' ');
+//   const namesUpper = [];
+// 
+//   for(const n of names){
+//     namesUpper.push(n[0].toUpperCase() + n.slice(1));
+//   }
+//   return namesUpper.join(' ');
+// };
+
+const capitalizeName = (name) => {
+  const names = name.split(' ');
+  const namesUpper = [];
+
+  names.forEach( (name) => namesUpper.push( name[0].replace(name[0], name[0].toUpperCase()) + name.slice(1)));
+  return namesUpper.join(' ');
+};
+
+console.log(capitalizeName('jessica ann smith davis'));
+capitalizeName('jonas schmedtmann');
+
+// Padding
+const message = 'Go to gate 23!'
+console.log(message.padStart(25, '+').padEnd(30, '+'));
+console.log('Jonas'.padStart(25, '+').padEnd(30, '+'));
+
+const maskCreditCard = function(number) {
+  // const str = number + '';
+  const str = number.toString();
+  const last = str.slice(-4);
+  return last.padStart(str.length, '*');
+}
+
+console.log(maskCreditCard(4354656576768787));
+console.log(maskCreditCard('4354656576768787'));
+
+// Repeat
+const message2 = 'Bad weather... All departures delayed ';
+console.log(message2.repeat(5));
+
+const planesInLine = (n) => {
+  console.log(`There are ${n} planes in line ${'✈'.repeat(n)}`);
+};
+
+planesInLine(5);
+planesInLine(10);
+
+
+/*
 // Strings Part 2
 
 const airline = 'TAP Air Portugal';
@@ -107,7 +169,7 @@ const checkBaggage = function(items){
 checkBaggage('I have a laptop, some Food and a pocket Knife');
 checkBaggage('Socks and camera');
 checkBaggage('Got some snacks and a gun for protection');
-
+*/
 
 /*
 // Strings
