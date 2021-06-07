@@ -1,5 +1,47 @@
 'use strict';
 
+const lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  book(flightNum, name) {
+    console.log(`${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`);
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+  }
+}
+
+lufthansa.book(239, 'Jonas Schmedtmann');
+lufthansa.book(635, 'John Smith');
+console.log(lufthansa);
+
+const eurowings = {
+  airline: 'Eurowings',
+  iataCode: 'EW',
+  bookings: [],
+};
+
+const book = lufthansa.book;
+
+// Doesn't work
+// book(23, 'Sarah Williams');
+
+// Call Method
+// using call method to set the 'this' keyword.
+book.call(eurowings, 23, 'Sarah Williams');
+console.log(eurowings);
+
+// Apply Method
+// takes an array of arguments. Not as common
+const flightData = [583, 'George Cooper'];
+book.apply(eurowings, flightData);
+console.log(eurowings);
+
+// In modern javaScript we can also use an array with the call method if we use the spread operator
+book.call(eurowings, ...flightData);
+
+
+
+/*
 // const greet = function (greeting) {
 //   return function (name) {
 //     console.log(`${greeting} ${name}`);
@@ -15,10 +57,7 @@ greeterHey('Steven');
 
 // the above is the same as this:
 greet('Hello')('Jonas');
-
-
-
-
+*/
 
 /*
 const oneWord = function(str) {
