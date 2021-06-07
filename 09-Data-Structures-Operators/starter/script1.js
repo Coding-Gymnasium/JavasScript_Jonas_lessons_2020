@@ -47,6 +47,9 @@ const restaurant = {
 
 ///////////////////////////////////////////
 ///////////////////////////////////////////
+
+
+/*
 // String Part 3
 // Split
 
@@ -107,7 +110,7 @@ const planesInLine = (n) => {
 
 planesInLine(5);
 planesInLine(10);
-
+*/
 
 /*
 // Strings Part 2
