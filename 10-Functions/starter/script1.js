@@ -1,5 +1,41 @@
 'use strict';
 
+const secureBooking = function() {
+  let passengerCount = 0;
+
+  return function() {
+    passengerCount++;
+    console.log(`${passengerCount} passengers`);
+  }
+};
+
+const booker = secureBooking();
+booker(); // 1 passengers
+booker(); // 2 passengers
+booker(); // 3 passengers
+
+console.dir(booker);
+
+
+/*
+const runOnce = function() {
+  console.log('This will not run again');
+};
+runOnce();
+
+// IIFE immediately invoqued function expression
+(function() {
+  console.log('This will not run again');
+  const isPrivate = 23; // encapsulated in this function
+})(); 
+
+// console.log(isPrivate); // won't work. Out of scoped
+
+(() => console.log('This will Also never run again'))();
+
+// IIFE are not use much in modern javaScript
+*/
+
 /*
 const lufthansa = {
   airline: 'Lufthansa',
