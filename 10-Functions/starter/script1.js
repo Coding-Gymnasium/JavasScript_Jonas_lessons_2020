@@ -1,5 +1,15 @@
 'use strict';
 
+(function () {
+  const header = document.querySelector('h1');
+  header.style.color = 'red';
+
+  document.querySelector('body').addEventListener('click', function() {
+    header.style.color === 'red' ? header.style.color = 'blue' : header.style.color = 'red';
+  }
+)})();
+
+/*
 // Example 1
 let f;
 
@@ -40,6 +50,7 @@ const boardPassengers = function(n, wait) {
 
 const perGroup = 1000; // Global scope. perGroup in boardPassengers get priority because of the closure.
 boardPassengers(180, 3);
+*/
 
 /*
 const secureBooking = function() {
