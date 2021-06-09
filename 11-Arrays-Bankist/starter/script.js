@@ -62,6 +62,8 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+///////////////////////////////////////////////////
+///////////////////////////////////////////////////
 // New code:
 
 const displayMovements = function(movements) {
@@ -83,10 +85,25 @@ const displayMovements = function(movements) {
 
 displayMovements(account1.movements)
 
+
+const createUsernames = function (accounts) {
+  accounts.forEach(function(acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+};
+
+createUsernames(accounts);
+console.log(accounts);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
 
+/*
 // Map Method
 // creates a new array and doesn't modify the original array.
 
@@ -111,7 +128,7 @@ const movementsDescriptions = movements.map(
 );
 
 console.log(movementsDescriptions);
-
+*/
 
 /*
 const currencies = new Map([
