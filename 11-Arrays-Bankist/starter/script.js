@@ -3,7 +3,8 @@
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // BANKIST APP
-
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
 // Data
 const account1 = {
   owner: 'Jonas Schmedtmann',
@@ -61,10 +62,32 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+// New code:
+
+const displayMovements = function(movements) {
+  containerMovements.innerHTML = '';
+  // .textContent = 0;
+
+  movements.forEach(function(mov, i) {
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
+
+    const html = `
+      <div class="movements__row">
+        <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
+        <div class="movements__value">${mov}</div>
+      </div>
+    `;
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+  });
+};
+
+displayMovements(account1.movements)
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
 
+/*
 const currencies = new Map([
   ['USD', 'United States dollar'],
   ['EUR', 'Euro'],
@@ -85,6 +108,7 @@ const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
 currenciesUnique.forEach(function(value, key, map) {
   console.log(`${key}: ${value}`);
 }); // due to a design convention value and key are set to the same when using forEach on a set. The key can be set to a 'throwaway value' like '_' but cannot be ommited or called the same (duplicate error)
+*/
 
 /*
 // For of loop
