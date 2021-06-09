@@ -74,3 +74,36 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+
+let arr = ['a', 'b', 'c', 'd', 'e'];
+
+// slice method
+console.log(arr.slice(2));
+console.log(arr.slice(2, 4));
+console.log(arr.slice(-2));
+console.log(arr.slice(-1));
+console.log(arr.slice(1, -1));
+console.log(arr.slice()); // creates a shallow copy of the array. Same as using the spread operator.
+
+// Splice method
+// this method mutates the array.
+arr.splice(-1);
+console.log(arr);
+arr.splice(1, 2);
+console.log(arr); // after using splice the original array changed.
+
+// Reverse method
+// it mutates the original array
+arr = ['a', 'b', 'c', 'd', 'e'];
+const arr2 = ['j', 'i', 'h', 'g', 'f'];
+console.log(arr2);
+console.log(arr2.reverse());
+
+// Concat method
+const letters = arr.concat(arr2);
+console.log(letters);
+// same as doing:
+console.log([...arr, ...arr2]);
+
+// Join method
+console.log(letters.join(' - '));
