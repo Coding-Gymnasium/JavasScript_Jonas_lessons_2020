@@ -75,6 +75,58 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
+// For of loop
+for (const movement of movements) {
+  if(movement > 0) {
+    console.log(`You deposited ${movement}`);
+  } else {
+    console.log(`You withdrew ${Math.abs(movement)}`);
+  }
+};
+
+// with a counter
+for (const [index, movement] of movements.entries()) {
+  if(movement > 0) {
+    console.log(`Movement ${index + 1}: You deposited ${movement}`);
+  } else {
+    console.log(`Movement ${index + 1}: You withdrew ${Math.abs(movement)}`);
+  }
+};
+
+// ForEach loop
+console.log('-------USING FOREACH--------'); 
+
+movements.forEach(function(movement) {
+  if(movement > 0) {
+    console.log(`You deposited ${movement}`);
+  } else {
+    console.log(`You withdrew ${Math.abs(movement)}`);
+  }
+});
+// how it works:
+// 0: function(200)
+// 1: function(450)
+// 2: function(400)
+// ...
+
+// with a counter:
+movements.forEach(function(movement, index, array) {
+  if(movement > 0) {
+    console.log(`Movement ${index + 1}: You deposited ${movement}`);
+  } else {
+    console.log(`Movement ${index + 1}: You withdrew ${Math.abs(movement)}`);
+  }
+});
+
+// Note: the continue and break statements don't work in a forEach loop. It will just iterate through. 
+// When these are needed then the for loop is a better choice.
+
+
+
+
+/*
+// Simple Array Methods:
+
 let arr = ['a', 'b', 'c', 'd', 'e'];
 
 // slice method
@@ -107,3 +159,5 @@ console.log([...arr, ...arr2]);
 
 // Join method
 console.log(letters.join(' - '));
+*/
+
