@@ -75,6 +75,18 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
+// ForEach with Maps
+currencies.forEach(function(value, key, map) {
+  console.log(`${key}: ${value}`);
+});
+
+// ForEach with a Set
+const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
+currenciesUnique.forEach(function(value, key, map) {
+  console.log(`${key}: ${value}`);
+}); // due to a design convention value and key are set to the same when using forEach on a set. The key can be set to a 'throwaway value' like '_' but cannot be ommited or called the same (duplicate error)
+
+/*
 // For of loop
 for (const movement of movements) {
   if(movement > 0) {
@@ -120,9 +132,7 @@ movements.forEach(function(movement, index, array) {
 
 // Note: the continue and break statements don't work in a forEach loop. It will just iterate through. 
 // When these are needed then the for loop is a better choice.
-
-
-
+*/
 
 /*
 // Simple Array Methods:
