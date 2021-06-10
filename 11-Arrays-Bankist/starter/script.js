@@ -85,6 +85,12 @@ const displayMovements = function(movements) {
 
 displayMovements(account1.movements)
 
+const calcDisplayBalance = function(movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+
+calcDisplayBalance(account1.movements);
 
 const createUsernames = function (accounts) {
   accounts.forEach(function(acc) {
@@ -97,12 +103,42 @@ const createUsernames = function (accounts) {
 };
 
 createUsernames(accounts);
-console.log(accounts);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
 
+// Reduce Method
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// accumulator is like a snowball effect
+ const balance = movements.reduce(function(accumulator, currentValue, i, arr) {
+   console.log( `Iteration ${i}: ${accumulator}`); // to visualize the snowball effect.
+   return accumulator + currentValue;
+ }, 0);
+
+console.log(balance);
+
+const balance1 = movements.reduce( (acc, cur) => acc + cur, 0);
+
+console.log(balance1);
+
+let balance2 = 0;
+for(const mov of movements) balance2 += mov;
+console.log(balance2);
+
+// Getting maximum value with Reduce
+const max = movements.reduce((acc, mov) => {
+  if (acc > mov) {
+    return acc;
+  } else {
+    return mov;
+  }
+}, movements[0]); // set up the first instance of the accumulator as the initial value.
+
+console.log(max);
+
+/*
 // Filter Method
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
@@ -124,7 +160,7 @@ console.log(depositsFor);
 
 const withdrawals = movements.filter(mov => mov < 0);
 console.log(withdrawals);
-
+*/
 
 /*
 // Map Method
