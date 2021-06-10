@@ -103,6 +103,29 @@ console.log(accounts);
 /////////////////////////////////////////////////
 // LECTURES
 
+// Filter Method
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const deposits = movements.filter(function(mov, i, arr) {
+ return mov > 0; 
+});
+
+// the 'i' and 'arr' parameters are available so Jonas shows them there so we know they are but normally you wouldn't type them there unless you are using them. In this case they are not being used. so that could just have been function(mov).
+
+console.log(movements);
+console.log(deposits);
+
+const depositsFor = [];
+
+for (const mov of movements) if (mov > 0) depositsFor.push(mov);
+
+console.log(depositsFor);
+
+const withdrawals = movements.filter(mov => mov < 0);
+console.log(withdrawals);
+
+
 /*
 // Map Method
 // creates a new array and doesn't modify the original array.
