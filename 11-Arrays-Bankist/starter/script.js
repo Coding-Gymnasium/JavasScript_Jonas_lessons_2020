@@ -132,6 +132,21 @@ createUsernames(accounts);
 /////////////////////////////////////////////////
 // LECTURES
 
+// Find Method
+// similar to the filter method BUT find only returns  the first instance of the condition. In additiion unlike the Filter method, the Find method returns the element NOT an array.
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const firstWithdrawl = movements.find(mov => mov < 0);
+console.log(firstWithdrawl);
+
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+
+console.log(account);
+
+
+
+/*
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const eurToUsd = 1.1;
 
@@ -143,7 +158,7 @@ const totalDepositsUSD = movements
   .reduce((acc, mov) => acc + mov, 0);
 
 console.log(totalDepositsUSD);
-
+*/
 
 /*
 // Reduce Method
@@ -428,6 +443,7 @@ TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
 GOOD LUCK 😀
 */
 
+/*
 const data = [5, 2, 4, 1, 15, 8, 3]
 const data1 = [16, 6, 10, 5, 6, 1, 4]
 
@@ -442,3 +458,4 @@ const avg2 = calcAverageHumanAge2(data1);
 
 console.log(avg1);
 console.log(avg2);
+*/
