@@ -205,19 +205,33 @@ btnClose.addEventListener('click', function(e) {
 /////////////////////////////////////////////////
 // LECTURES
 
-// Find Method
-// similar to the filter method BUT find only returns  the first instance of the condition. In additiion unlike the Filter method, the Find method returns the element NOT an array.
+// Some Method
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
+// Equality
+console.log(movements.includes(-130));
+
+//Condition
+console.log(movements.some(mov => mov === -130)); // in this case the include method  would be better.
+
+const anyDeposits = movements.some( mov => mov > 1500);
+
+
+
+// Find Method
+// similar to the filter method BUT find only returns  the first instance of the condition. In additiion unlike the Filter method, the Find method returns the element NOT an array.
+
+/*
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+ 
 const firstWithdrawl = movements.find(mov => mov < 0);
 console.log(firstWithdrawl);
 
 const account = accounts.find(acc => acc.owner === 'Jessica Davis');
 
 console.log(account);
-
-
+*/
 
 /*
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
