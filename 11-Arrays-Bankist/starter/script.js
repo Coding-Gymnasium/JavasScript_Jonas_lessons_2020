@@ -225,10 +225,21 @@ btnClose.addEventListener('click', function(e) {
 /////////////////////////////////////////////////
 // LECTURES
 
-// Some Method
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
+// Every Method
+
+console.log(movements.every(mov => mov > 0)); // returns false because not all movements are deposits.
+console.log(account4.movements.every(mov => mov > 0)); // returns true  because all movements are deposits.
+
+// Separate callback
+const deposit = mov => mov > 0;
+console.log(movements.some(deposit));
+console.log(movements.every(deposit));
+console.log(movements.filter(deposit));
+
+// Some Method
 // Equality
 console.log(movements.includes(-130));
 
