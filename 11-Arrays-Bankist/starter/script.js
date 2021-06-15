@@ -235,6 +235,31 @@ btnSort.addEventListener('click', function(e) {
 // LECTURES
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
+// Empty arrays + fill method
+const x = new Array(7);
+console.log(x);
+//x.fill(1);
+//console.log(x);
+x.fill(1, 3, 5);
+console.log(x);
+
+// fill method on existing array
+console.log([1, 2, 3, 4, 5, 6, 7, 8].fill(23, 2, 6));
+
+// Array.from function
+console.log(Array.from({length: 7}, () => 1));
+
+console.log(Array.from({length: 7}, (_el, index) => index + 1)); // _el signifies we are not using the element by adding the underscore.
+
+
+labelBalance.addEventListener('click', function() {
+  const movementsUI = Array.from(
+  document.querySelectorAll('.movements__value'),
+  el => Number(el.textContent.replace('€', ''))
+  );
+  console.log(movementsUI);
+});
+
 /*
 // Sort Method
 
