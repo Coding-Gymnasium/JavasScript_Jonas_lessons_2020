@@ -225,11 +225,44 @@ btnClose.addEventListener('click', function(e) {
 /////////////////////////////////////////////////
 // LECTURES
 
-
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-// Every Method
+// Flat Method
 
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr.flat());
+
+
+const arrDeep = [[[1,2], 3], [4,[5,6]], 7,8];
+console.log(arrDeep.flat(2)); // the argument determines the level of depth.
+
+const accountMovements = accounts.map(acc => acc.movements);
+console.log(accountMovements);
+const allMovements = accountMovements.flat();
+console.log(allMovements);
+const overallBalance = allMovements.reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance);
+
+//// chainning the methods
+
+const accountMovements1 = accounts
+  .map(acc => acc.movements)
+  .flat()
+  .reduce((acc, mov) => acc + mov, 0);
+
+console.log(accountMovements1);
+
+
+// Flat Map Method
+
+const overallBalance2 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((acc, mov) => acc + mov, 0);
+
+console.log(overallBalance2);
+
+/*
+// Every Method
 console.log(movements.every(mov => mov > 0)); // returns false because not all movements are deposits.
 console.log(account4.movements.every(mov => mov > 0)); // returns true  because all movements are deposits.
 
@@ -248,10 +281,9 @@ console.log(movements.some(mov => mov === -130)); // in this case the include me
 
 const anyDeposits = movements.some( mov => mov > 1500);
 
-
-
 // Find Method
 // similar to the filter method BUT find only returns  the first instance of the condition. In additiion unlike the Filter method, the Find method returns the element NOT an array.
+*/
 
 /*
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
