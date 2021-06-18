@@ -251,3 +251,34 @@ btnSort.addEventListener('click', function (e) {
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
+
+console.log(23 === 23.0);
+// Base 10 - 0 = 9. 1/10 = 0.1. 3/10 = 3.3333333
+// JS is not in base 10 but in Binary base 2. 0 1
+console.log(0.1 + 0.2);
+console.log(0.1 + 0.2 === 0.3); // This is a problem with JS calculations.
+
+// from string to number:
+console.log(Number('23'));
+console.log(+'23');
+
+// Parsing
+console.log(Number.parseInt('30px', 10)); // 30
+console.log(Number.parseInt('e23', 10)); // NaN
+
+console.log(Number.parseFloat('2.5rem')); // 2.5
+console.log(Number.parseInt('2.5rem')); // 2
+
+
+console.log(Number.isNaN(20)); // False
+console.log(Number.isNaN('20')); // False
+console.log(Number.isNaN(Number('20x'))); // true
+console.log(Number.isNaN(23 / 0)); // false
+
+console.log(Number.isFinite(20)); // true
+console.log(Number.isFinite('20')); // false
+console.log(Number.isFinite(23 / 0)); // false
+
+//// isFinite is the best way to check whether something is a number.
+
+
