@@ -285,6 +285,7 @@ console.log(Number.isFinite(23 / 0)); // false
 //// isFinite is the best way to check whether something is a number.
 */
 
+/*
 //// Math and Rounding
 
 console.log(Math.sqrt(25));
@@ -329,8 +330,31 @@ console.log((2.7).toFixed(0));
 console.log((2.7).toFixed(3)); 
 console.log((2.345).toFixed(2)); 
 console.log(+(2.345).toFixed(2)); // the '+' is the same as doing Number(2.345). It converts it to a number
+*/
 
+/// Remainder operator
 
+console.log(5 % 2); // 1. The remainder is the number lef over in a division before going into decimals.
+console.log(5 / 2); // 5 = 2 * 2 + 1
 
+console.log(8 % 3); // 2
+console.log(8 / 3); // 8 = 2 * 3 + 2
 
+// check for an even number
+console.log(6 % 2); // 0 This is an even number
+console.log(7 % 2); // 1 This is an uneven number
+
+const isEven = n => n % 2 === 0;
+console.log(isEven(5)); // false
+console.log(isEven(8)); // true
+
+labelBalance.addEventListener('click', function() {
+  [...document.querySelectorAll('.movements__row')].forEach(function(row, i) {
+    if (i % 2 === 0) {
+      row.style.backgroundColor = 'LightGray';
+    } else {
+      row.style.backgroundColor = 'LightBlue';
+    };
+  });
+});
 
