@@ -7,7 +7,7 @@
 /////////////////////////////////////////////////
 // Data
 
-// DIFFERENT DATA! Contains movement dates, currency and locale
+// DIFFERENT DATA! Contains olovement dates, currency and locale
 
 const account1 = {
   owner: 'Jonas Schmedtmann',
@@ -332,6 +332,7 @@ console.log((2.345).toFixed(2));
 console.log(+(2.345).toFixed(2)); // the '+' is the same as doing Number(2.345). It converts it to a number
 */
 
+/*
 /// Remainder operator
 
 console.log(5 % 2); // 1. The remainder is the number lef over in a division before going into decimals.
@@ -357,4 +358,37 @@ labelBalance.addEventListener('click', function() {
     };
   });
 });
+*/
 
+//// BigInt
+
+console.log(2 ** 53 - 1); // 9007199254740991
+console.log(Number.MAX_SAFE_INTEGER); // 9007199254740991
+// js can't do precise calculation with numbers greater than these.
+// We use BigInt for larger numbers
+
+console.log(BigInt(123456789012345678901234567890));
+// creates a big int numbrer with an n at the end.
+
+console.log(10000n + 10000n); // 20000n
+// can't mix big int with regular numbers though
+
+const huge = 123456789012345678901234567890n;
+const num = 23;
+// console.log(huge * num); // Uncaught TypeError: Cannot mix BigInt with other types, use explicit conversions
+
+console.log(huge * BigInt(num));
+
+console.log(20n > 15); // true
+console.log(20n === 20); // false
+console.log(typeof 20n); // bigint
+console.log( 20n == 20); // true
+console.log( 20n == '20'); // true
+
+console.log( huge + ' is REALLY BIG!!!'); // it gets coerced to a string.
+
+//----  BigInt doesn't work with Math operators
+// console.log(Math.sqrt(16n)); // Uncaught TypeError: Cannot convert a BigInt value to a number at Math.sqrt
+
+console.log(11n / 3n); // 3n
+console.log(10 / 3); // 3.3333333
