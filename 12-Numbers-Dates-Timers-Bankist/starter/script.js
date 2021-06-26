@@ -183,14 +183,42 @@ const updateUI = function (acc) {
   calcDisplaySummary(acc);
 };
 
+const startLogoutTimer = function() {
+  const tick = function() {
+    const min = String(Math.trunc(time / 60)).padStart(2, 0);
+    const sec = String(time % 60).padStart(2, 0);
+    // in each call, print the remaining time to UI
+    labelTimer.textContent = `${min}:${sec}`;
+
+
+    // When 0 seconds, stop timer and log out user
+    if(time === 0) {
+      clearInterval(timer);
+      labelWelcome.textContent = 'Log in to get started'
+      containerApp.style.opacity = 0;
+    };
+
+    // Decrease 1second
+    time--;
+  }
+  // set time to 5 minutes
+  let time = 120;
+
+  // call the timer every second
+  tick();
+  const timer = setInterval(tick, 1000);
+
+  return timer;
+};
+
 ///////////////////////////////////////
 // Event handlers
-let currentAccount;
+let currentAccount, timer;
 
-//Fake Always logged in
-currentAccount = account1;
-updateUI(currentAccount);
-containerApp.style.opacity = 100;
+// //Fake Always logged in
+// currentAccount = account1;
+// updateUI(currentAccount);
+// containerApp.style.opacity = 100;
 
 // const now = new Date();
 // // labelDate.textContent = now;
@@ -202,8 +230,6 @@ containerApp.style.opacity = 100;
 // const year = now.getFullYear();
 // const hour = now.getHours();
 // const min = now.getMinutes();
-
-
 
 
 btnLogin.addEventListener('click', function (e) {
@@ -252,6 +278,9 @@ btnLogin.addEventListener('click', function (e) {
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
 
+    if (timer) clearInterval(timer);
+    timer = startLogoutTimer();
+
     // Update UI
     updateUI(currentAccount);
   }
@@ -281,6 +310,10 @@ btnTransfer.addEventListener('click', function (e) {
 
     // Update UI
     updateUI(currentAccount);
+    
+    // Reset Timer
+    clearInterval(timer);
+    timer = startLogoutTimer();
   }
 });
 
@@ -299,6 +332,11 @@ btnLoan.addEventListener('click', function (e) {
 
       // Update UI
       updateUI(currentAccount);
+
+      // Reset Timer
+      clearInterval(timer);
+      timer = startLogoutTimer();
+
     }, 2500);
 }
   inputLoanAmount.value = '';
@@ -550,6 +588,7 @@ console.log('Syria', new Intl.NumberFormat('ar-SY', options).format(num));
 console.log('Browser', new Intl.NumberFormat(navigator.language, options).format(num));
 */
 
+/*
 // setTimeout()
 
 // const ingredients = ['olives', 'spinach']
@@ -565,4 +604,6 @@ setInterval(function() {
   const now = new Date();
   console.log(now.toLocaleTimeString());
 }, 1000);
+*/
+
 
