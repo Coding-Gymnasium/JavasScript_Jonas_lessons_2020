@@ -48,32 +48,43 @@ btnScrollTo.addEventListener('click', function(e) {
 
   // Scrolling
   // window.scrollTo(
-    // s1coords.left + window.pageXOffset, 
+    // s1coords.left + window.pageXOffset,
     // s1coords.top + window.pageYOffset
   // );
 
 //  window.scrollTo({
-//    left: s1coords.left + window.pageXOffset, 
+//    left: s1coords.left + window.pageXOffset,
 //    top: s1coords.top + window.pageYOffset,
 //    behavior: 'smooth',
 //  });
-    
+
     section1.scrollIntoView({ behavior: 'smooth' });
 });
 
 //----------- Page Navigation
 
-document.querySelectorAll('.nav__link').forEach(function(el) {
-  el.addEventListener('click', function(e) {
-    e.preventDefault();
-    const id = this.getAttribute('href');
-    console.log(id);
+//document.querySelectorAll('.nav__link').forEach(function(el) {
+//  el.addEventListener('click', function(e) {
+//    e.preventDefault();
+//    const id = this.getAttribute('href');
+//    console.log(id);
+//    document.querySelector(id).scrollIntoView( { behavior: 'smooth' });
+//  });
+//});
+
+// Event Delegation
+// 1. Add event listener to comon parent element
+// 2. Determin whate element originated the event
+
+document.querySelector('.nav__links').addEventListener('click', function(e) {
+  e.preventDefault();
+
+  // Matching strategy
+  if(e.target.classList.contains('nav__link')) {
+    const id = e.target.getAttribute('href');
     document.querySelector(id).scrollIntoView( { behavior: 'smooth' });
-  });
+  }
 });
-
-
-
 
 //////////////////////////////////////////////
 //////////////////////////////////////////////
@@ -102,7 +113,7 @@ document.getElementsByClassName('btn');
 const message = document.createElement('div');
 message.classList.add('cookie-message');
 message.textContent = 'We use cookies for improved functionality and analytics.';
-message.innerHTML = 'We use cookies for improved functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>'; 
+message.innerHTML = 'We use cookies for improved functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>';
 
 // header.prepend(message); // add the element as the first child
 header.append(message); // adds the element as the last child.
@@ -184,7 +195,7 @@ setTimeout(() =>  h1.removeEventListener('mouseenter', alertH1), 3000);
 // h1.onmouseenter = function(e) {
 //   alert('onmouseenter: Great! You are reading the heading :-)');
 // };
-// 
+//
 
 */
 
