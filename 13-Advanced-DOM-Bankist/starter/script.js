@@ -86,6 +86,28 @@ document.querySelector('.nav__links').addEventListener('click', function(e) {
   }
 });
 
+// Tabbed Component
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
+// tabs.forEach(t => t.addEventListener('click', () => console.log('TAB')));
+tabsContainer.addEventListener('click', function(e) {
+  const clicked = e.target.closest('.operations__tab');
+  console.log(clicked);
+
+  if(!clicked) return; // this is a guard clause.
+
+  // Active tab
+  tabs.forEach(t => t.classList.remove('operations__tab--active'));
+  clicked.classList.add('operations__tab--active');
+
+  // Activate content area
+
+});
+
+
+
 //////////////////////////////////////////////
 //////////////////////////////////////////////
 //------------  Lecture --------------------//
@@ -226,7 +248,7 @@ document.querySelector('.nav').addEventListener('click', function (e) {
   console.log('Nav', e.target, e.currentTarget);
 });
 */
-
+/*
 // Traversing the DOM
 const h1 = document.querySelector('h1');
 
@@ -259,4 +281,4 @@ console.log(h1.parentElement.children);
   if(el !== h1) el.style.transform = 'scale(1.5)';
 });
 
-
+*/
