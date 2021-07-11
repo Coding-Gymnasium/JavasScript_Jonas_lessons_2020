@@ -111,32 +111,62 @@ tabsContainer.addEventListener('click', function(e) {
 
 // Menu fade animation
 
-nav.addEventListener('mouseover', function(e) {
- if(e.target.classList.contains('nav__link')) {
-   const link = e.target;
-   const siblings = link.closest('.nav').querySelectorAll('.nav__link');
-   const logo = link.closest('.nav').querySelector('img');
+const handleHover = function(e) {
+  // console.log(this, e.currentTarget)
 
-   siblings.forEach(el => {
-    if(el !== link) el.style.opacity = 0.5;
-   })
-   logo.style.opacity = 0.5;
- }
-})
+  if(e.target.classList.contains('nav__link')) {
+    const link = e.target;
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+    const logo = link.closest('.nav').querySelector('img');
 
+    siblings.forEach(el => {
+     if(el !== link) el.style.opacity = this;
+    })
+    logo.style.opacity = this;
+  }
+}
 
-nav.addEventListener('mouseout', function(e) {
- if(e.target.classList.contains('nav__link')) {
-   const link = e.target;
-   const siblings = link.closest('.nav').querySelectorAll('.nav__link');
-   const logo = link.closest('.nav').querySelector('img');
+// nav.addEventListener('mouseover', function(e) {
+//   handleHover(e, 0.5);
+// });
+// nav.addEventListener('mouseout', function(e) {
+//   handleHover(e, 1);
+// });
 
-   siblings.forEach(el => {
-    if(el !== link) el.style.opacity = 1;
-   })
-   logo.style.opacity = 1;
- }
-})
+// Refactor to use bind instead ⬇️
+//// The 'bind' method creates a copy of the function it gets called on.
+// it will set the 'this' keyword in this function call to whatever value we pass into 'bind'
+
+// Passing additional values into handler using the 'this' keyword. In this case for opacity.
+nav.addEventListener('mouseover', handleHover.bind(0.5));
+nav.addEventListener('mouseout', handleHover.bind(1));
+
+//nav.addEventListener('mouseover', function(e) {
+// if(e.target.classList.contains('nav__link')) {
+//   const link = e.target;
+//   const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+//   const logo = link.closest('.nav').querySelector('img');
+//
+//   siblings.forEach(el => {
+//    if(el !== link) el.style.opacity = 0.5;
+//   })
+//   logo.style.opacity = 0.5;
+// }
+//})
+//
+//
+//nav.addEventListener('mouseout', function(e) {
+// if(e.target.classList.contains('nav__link')) {
+//   const link = e.target;
+//   const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+//   const logo = link.closest('.nav').querySelector('img');
+//
+//   siblings.forEach(el => {
+//    if(el !== link) el.style.opacity = 1;
+//   })
+//   logo.style.opacity = 1;
+// }
+//})
 
 //////////////////////////////////////////////
 //////////////////////////////////////////////
