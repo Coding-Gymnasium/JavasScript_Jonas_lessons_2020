@@ -1,7 +1,8 @@
 'use strict';
-/*
+
+/////------- Constructor Functions and the New Operator
 const Person = function(firstName, birthYear) {
-  // console.log(this); // => Person {}
+  // Instance Properties
   this.firstName = firstName;
   this.birthYear = birthYear;
 
@@ -25,7 +26,16 @@ console.log(matilda, jack);
 
 console.log(jonas instanceof Person); // => true
 
-// Prototypes
+Person.hey = function() {
+  console.log('hey there 👋 😊');
+  console.log(this);
+};
+
+Person.hey();
+// this function is not inherited though
+
+
+////------- Prototypes
 console.log(Person.prototype);
 
 Person.prototype.calcAge = function () {
@@ -71,7 +81,6 @@ console.log(arr.unique());
 const h1 = document.querySelector('h1');
 console.dir(h1) // to observe the object.
 console.dir(x => x + 1);
-*/
 
 ///////////////////////////////////////
 //----------------- Coding Challenge #1
@@ -122,6 +131,7 @@ class PersonCl {
     this.birthYear = birthYear;
   }
 
+// Instance methods
   //// Methods will be added to .prototype property
   calcAge() {
     console.log(2037 - this.birthYear);
@@ -146,6 +156,12 @@ class PersonCl {
   get fullName() {
     return this._fullName;
   }
+
+  // Static Method
+  static hey() {
+    console.log('Hey There static 👋🏻');
+    console.log(this);
+  }
 }
 
 const jessica = new PersonCl('Jessica Davis', 1996);
@@ -166,6 +182,7 @@ jessica.greet();
 
 const walter = new PersonCl('Walter White', 1995);
 
+PersonCl.hey();
 
 //------------ Getters and Setters
 
