@@ -120,7 +120,7 @@ car1.break();
 */
 
 //------------ Classes
-/*
+
 //// Class expression
 //const PersonCl = class {}
 
@@ -160,15 +160,15 @@ class PersonCl {
   // Static Method
   static hey() {
     console.log('Hey There static 👋🏻');
-    console.log(this);
+//    console.log(this);
   }
 }
 
 const jessica = new PersonCl('Jessica Davis', 1996);
-console.log(jessica);
+//console.log(jessica);
 jessica.calcAge();
-console.log(jessica.age);
-console.log(jessica.__proto__ === PersonCl.prototype);
+//console.log(jessica.age);
+//console.log(jessica.__proto__ === PersonCl.prototype);
 
 // PersonCl.prototype.greet = function() {
 //   console.log(`Hey ${this.firstName}` )
@@ -185,7 +185,7 @@ const walter = new PersonCl('Walter White', 1995);
 PersonCl.hey();
 
 //------------ Getters and Setters
-
+/*
 const account = {
   owner: 'Jonas',
   movements: [200, 530, 120, 300],
@@ -203,9 +203,10 @@ console.log(account.latest);
 
 account.latest = 50;
 console.log(account.movements);
+*/
 
 ////////------- Object Create
-
+/*
 const PersonProto = {
   calcAge() {
     console.log(2037 - this.birthYear);
@@ -231,6 +232,7 @@ console.log(steven.__proto__ === PersonProto);
 const sarah = Object.create(PersonProto);
 sarah.init('Sarah', 1970);
 sarah.calcAge();
+*/
 
 ///////////////////////////////////////
 // Coding Challenge #2
@@ -332,7 +334,7 @@ DATA CAR 1: 'Tesla' going at 120 km/h, with a charge of 23%
 
 GOOD LUCK 😀
 */
-
+/*
 const Car = function( make, speed) {
   this.make = make;
   this.speed = speed;
@@ -370,4 +372,24 @@ tesla.chargeBattery(90);
 console.log(tesla);
 tesla.break();
 tesla.accelerate();
+*/
 
+class StudentCl extends PersonCl {
+  constructor(fullName, birthYear, course) {
+    // super always needs to happen first!
+    super(fullName, birthYear);
+    this.course = course;
+  }
+
+  introduce() {
+    console.log(`My name is ${this.fullName} and I study ${this.course}`);
+  }
+
+  calcAge() {
+    console.log(`I'm ${2037 - this.birthYear}`);
+    };
+}
+
+const martha = new StudentCl('Martha Jones', 2012, 'Computer Science')
+martha.introduce();
+martha.calcAge();
