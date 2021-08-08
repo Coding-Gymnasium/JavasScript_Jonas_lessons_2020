@@ -119,6 +119,7 @@ car1.accelerate();
 car1.break();
 */
 
+/*
 //------------ Classes
 
 //// Class expression
@@ -183,6 +184,7 @@ jessica.greet();
 const walter = new PersonCl('Walter White', 1995);
 
 PersonCl.hey();
+*/
 
 //------------ Getters and Setters
 /*
@@ -373,7 +375,7 @@ console.log(tesla);
 tesla.break();
 tesla.accelerate();
 */
-
+/*
 class StudentCl extends PersonCl {
   constructor(fullName, birthYear, course) {
     // super always needs to happen first!
@@ -393,3 +395,47 @@ class StudentCl extends PersonCl {
 const martha = new StudentCl('Martha Jones', 2012, 'Computer Science')
 martha.introduce();
 martha.calcAge();
+*/
+
+class Account {
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    this.pin = pin;
+    this.movements = [];
+    this.locale = navigator.language;
+
+    console.log(`thanks for opening an account, ${owner}`);
+  }
+  
+  // Public interface
+  deposit(val) {
+    this.movements.push(val)
+  }
+
+  withdraw(val) {
+    this.deposit(-val)
+  }
+
+  approveLoan(val) {
+    return true;
+  }
+
+  requestLoan(val) {
+    if(this.approveLoan(val)) {
+      this.deposit(val);
+      console.log('Loan approvad');
+    }
+  }
+}
+
+const acc1 = new Account('Jonas', 'EUR', 1111);
+
+acc1.deposit(250);
+acc1.withdraw(140);
+acc1.requestLoan(1000);
+
+
+console.log(acc1);
+
+
