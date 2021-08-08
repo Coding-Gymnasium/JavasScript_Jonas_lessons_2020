@@ -396,7 +396,9 @@ const martha = new StudentCl('Martha Jones', 2012, 'Computer Science')
 martha.introduce();
 martha.calcAge();
 
+*/
 
+/*
 //--------------------------------------------
   // Inheritance Between "Classes": Object.create
 //--------------------------------------------
@@ -470,4 +472,3 @@ acc1.requestLoan(1000);
 
 
 console.log(acc1);
-
