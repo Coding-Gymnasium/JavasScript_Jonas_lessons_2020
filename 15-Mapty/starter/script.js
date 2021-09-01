@@ -27,10 +27,30 @@ if (navigator.geolocation)
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(map);
 
-      L.marker(coords)
-        .addTo(map)
-        .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-        .openPopup();
+      const currentDate = new Date();
+      const datetime =
+        'Last Sync: ' +
+        currentDate.getDate() +
+        '/' +
+        (currentDate.getMonth() + 1) +
+        '/' +
+        currentDate.getFullYear() +
+        ' @ ' +
+        currentDate.getHours() +
+        ':' +
+        currentDate.getMinutes() +
+        ':' +
+        currentDate.getSeconds();
+
+      map.on('click', function (mapEvent) {
+        //console.log(mapEvent.latlng.lat);
+        const coords = mapEvent.latlng;
+
+        L.marker(coords)
+          .addTo(map)
+          .bindPopup(`Workout - ${currentDate}`)
+          .openPopup();
+      });
     },
     function () {
       console.log('Could not get your position');
