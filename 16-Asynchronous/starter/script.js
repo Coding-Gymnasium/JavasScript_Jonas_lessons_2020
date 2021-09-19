@@ -62,6 +62,7 @@ const renderCountry = (data, className = '') => {
   countriesContainer.style.opacity = 1;
 };
 
+/*
 const getCountryAndNeighbor = country => {
   // AJAX call country 1
   const request = new XMLHttpRequest();
@@ -121,3 +122,34 @@ const getCountryAndNeighbor = country => {
 };
 
 getCountryAndNeighbor('norway');
+*/
+
+//// ------------------- Lesson 248 ------------------------ ////
+//// ------------------- Using Fetch and Promises  ------------------------ ////
+
+// const country = 'norway';
+
+// const request = fetch(
+//   `https://restcountries.eu/rest/v2/name/${country}?fullText=true`
+// );
+// console.log(request);
+
+// const getCountryData = function (country) {
+//   fetch(`https://restcountries.eu/rest/v2/name/${country}?fullText=true`)
+//     .then(response => {
+//       console.log(response);
+//       return response.json();
+//     })
+//     .then(data => {
+//       console.log(data);
+//       renderCountry(data[0]);
+//     });
+// };
+
+const getCountryData = function (country) {
+  fetch(`https://restcountries.eu/rest/v2/name/${country}?fullText=true`)
+    .then(response => response.json())
+    .then(data => renderCountry(data[0]));
+};
+
+getCountryData('norway');
