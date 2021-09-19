@@ -146,10 +146,27 @@ getCountryAndNeighbor('norway');
 //     });
 // };
 
+/*
 const getCountryData = function (country) {
   fetch(`https://restcountries.eu/rest/v2/name/${country}?fullText=true`)
     .then(response => response.json())
     .then(data => renderCountry(data[0]));
+};
+*/
+
+const getCountryData = function (country) {
+  fetch(`https://restcountries.eu/rest/v2/name/${country}?fullText=true`)
+    .then(response => response.json())
+    .then(data => {
+      renderCountry(data[0]);
+      data[0].borders.forEach(neighbor => {
+        fetch(
+          `https://restcountries.eu/rest/v2/alpha/${neighbor}?fullText=true`
+        )
+          .then(response => response.json())
+          .then(neighbor => renderCountry(neighbor, 'neighbour'));
+      });
+    });
 };
 
 getCountryData('norway');
