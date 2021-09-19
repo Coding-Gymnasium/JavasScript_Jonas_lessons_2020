@@ -154,19 +154,33 @@ const getCountryData = function (country) {
 };
 */
 
+//// -------------- Flat Chaining Promises ---------------------- ////
+
 const getCountryData = function (country) {
   fetch(`https://restcountries.eu/rest/v2/name/${country}?fullText=true`)
     .then(response => response.json())
     .then(data => {
       renderCountry(data[0]);
+
+      const neighbour = data[0].borders[0];
+      if (!neighbour) return;
+
+      // Country 2
+      return fetch(
+        `https://restcountries.eu/rest/v2/alpha/${neighbour}?fullText=true`
+      );
+
+      /*
       data[0].borders.forEach(neighbor => {
-        fetch(
-          `https://restcountries.eu/rest/v2/alpha/${neighbor}?fullText=true`
-        )
+        if (!neighbor) return;
+        return fetch( `https://restcountries.eu/rest/v2/alpha/${neighbor}?fullText=true`)
           .then(response => response.json())
           .then(neighbor => renderCountry(neighbor, 'neighbour'));
       });
-    });
+      */
+    })
+    .then(response => response.json())
+    .then(data => renderCountry(data, 'neighbour'));
 };
 
 getCountryData('norway');
