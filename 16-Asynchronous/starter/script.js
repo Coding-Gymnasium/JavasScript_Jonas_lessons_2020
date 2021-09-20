@@ -2,6 +2,7 @@
 
 const btn = document.querySelector('.btn-country');
 const countriesContainer = document.querySelector('.countries');
+
 const renderCountry = (data, className = '') => {
   const html = `
   <article class="country ${className}">
@@ -20,9 +21,18 @@ const renderCountry = (data, className = '') => {
   countriesContainer.insertAdjacentHTML('beforeend', html);
   // countriesContainer.style.opacity = 1;
 };
+
 const renderError = msg => {
   countriesContainer.insertAdjacentText('beforeend', msg);
   // countriesContainer.style.opacity = 1;
+};
+
+const getJSON = function (url, errorMsg = 'Something went wrong') {
+  return fetch(url).then(response => {
+    if (!response.ok) throw new Error(`${errorMsg} (${response.status})`);
+
+    return response.json();
+  });
 };
 
 ///////////////////////////////////////
@@ -160,8 +170,46 @@ const getCountryData = function (country) {
 //// -------------- Flat Chaining Promises ---------------------- ////
 
 const getCountryData = function (country) {
+  // Country 1
+  getJSON(
+    `https://restcountries.eu/rest/v2/name/${country}`,
+    'Country not found'
+  )
+    .then(data => {
+      renderCountry(data[0]);
+      const neighbour = data[0].borders[0];
+
+      if (!neighbour) throw new Error('No neighbour found!');
+
+      // Country 2
+      return getJSON(
+        `https://restcountries.eu/rest/v2/alpha/${neighbour}`,
+        'Country not found'
+      );
+    })
+
+    .then(data => renderCountry(data, 'neighbour'))
+    .catch(err => {
+      console.error(`${err} 💥💥💥`);
+      renderError(`Something went wrong 💥💥 ${err.message}. Try again!`);
+    })
+    .finally(() => {
+      countriesContainer.style.opacity = 1;
+    });
+};
+
+btn.addEventListener('click', function () {
+  getCountryData('norway');
+});
+
+/*
+const getCountryData = function (country) {
   fetch(`https://restcountries.eu/rest/v2/name/${country}?fullText=true`)
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok)
+        throw new Error(`Country not found. Status: ${response.status}`);
+      return response.json();
+    })
     .then(data => {
       renderCountry(data[0]);
 
@@ -173,14 +221,12 @@ const getCountryData = function (country) {
         `https://restcountries.eu/rest/v2/alpha/${neighbour}?fullText=true`
       );
 
-      /*
-      data[0].borders.forEach(neighbor => {
-        if (!neighbor) return;
-        return fetch( `https://restcountries.eu/rest/v2/alpha/${neighbor}?fullText=true`)
-          .then(response => response.json())
-          .then(neighbor => renderCountry(neighbor, 'neighbour'));
-      });
-      */
+      // data[0].borders.forEach(neighbor => {
+      //   if (!neighbor) return;
+      //   return fetch( `https://restcountries.eu/rest/v2/alpha/${neighbor}?fullText=true`)
+      //     .then(response => response.json())
+      //     .then(neighbor => renderCountry(neighbor, 'neighbour'));
+      // });
     })
     .then(response => response.json())
     .then(data => renderCountry(data, 'neighbour'))
@@ -197,4 +243,5 @@ btn.addEventListener('click', () => {
   getCountryData('norway');
 });
 
-// getCountryData('fdjfalj');
+getCountryData('fdjfalj');
+*/
