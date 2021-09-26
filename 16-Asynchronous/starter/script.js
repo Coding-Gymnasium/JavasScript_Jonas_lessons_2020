@@ -6,7 +6,7 @@ const countriesContainer = document.querySelector('.countries');
 const renderCountry = (data, className = '') => {
   const html = `
   <article class="country ${className}">
-    <img class="country__img" src="${data.flag}" />
+    <img class="country__img" src="${data.flags[0]}" />
     <div class="country__data">
       <h3 class="country__name">${data.name}</h3>
       <h4 class="country__region">${data.region}</h4>
@@ -302,7 +302,7 @@ const whereAmI = function (lat, lng) {
       console.log(`You are in ${data.city}, ${data.country}`);
 
       return fetch(
-        `https://restcountries.eu/rest/v2/name/${data.country}?fullText=true`
+        `https://restcountries.com/v2/name/${data.country}?fullText=true`
       );
     })
     .then(response => {
