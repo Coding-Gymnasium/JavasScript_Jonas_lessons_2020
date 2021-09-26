@@ -315,3 +315,21 @@ const whereAmI = function (lat, lng) {
 };
 
 whereAmI(COORD_1.lang, COORD_1.lng);
+
+// using the Geolocation API
+var options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0,
+};
+
+function locateMe(position) {
+  var crd = position.coords;
+  whereAmI(crd.latitude, crd.longitude);
+}
+
+function error(err) {
+  console.warn(`ERROR(${err.code}): ${err.message}`);
+}
+
+navigator.geolocation.getCurrentPosition(locateMe, error, options);
