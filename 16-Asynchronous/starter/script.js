@@ -335,6 +335,7 @@ function error(err) {
 navigator.geolocation.getCurrentPosition(locateMe, error, options);
 */
 
+/*
 console.log('Test start');
 setTimeout(() => console.log('0 sec timer'), 0);
 Promise.resolve('Resolve promise 1').then(res => console.log(res));
@@ -343,3 +344,21 @@ Promise.resolve('Resolve promise 2').then(res => {
   console.log(res);
 });
 console.log('Test end');
+*/
+
+const lotteryPromise = new Promise(function (resolve, reject) {
+  console.log('awaiting results...');
+
+  setTimeout(() => {
+    if (Math.random() >= 0.5) {
+      resolve('You Win!');
+    } else {
+      reject(new Error('You lost'));
+    }
+  }, 2000);
+});
+
+lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
+
+
+
