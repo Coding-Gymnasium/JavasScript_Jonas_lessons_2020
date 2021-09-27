@@ -290,7 +290,7 @@ PART 2
 
 GOOD LUCK 😀
 */
-
+/*
 const whereAmI = function (lat, lng) {
   fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
     .then(response => {
@@ -333,3 +333,13 @@ function error(err) {
 }
 
 navigator.geolocation.getCurrentPosition(locateMe, error, options);
+*/
+
+console.log('Test start');
+setTimeout(() => console.log('0 sec timer'), 0);
+Promise.resolve('Resolve promise 1').then(res => console.log(res));
+Promise.resolve('Resolve promise 2').then(res => {
+  for (let i = 0; i < 1000000000; i++) {} // this line creates an artificial delay to demonstrate that micro tasks such as Promises have priority. In this case the '0 sec timer' has to wait for the promises to complete before it gets executed.
+  console.log(res);
+});
+console.log('Test end');
