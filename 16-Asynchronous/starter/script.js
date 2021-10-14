@@ -463,6 +463,7 @@ GOOD LUCK 😀
 // };
 // createImage('./img/img-1.jpg');
 
+/*
 const wait = function (seconds) {
   return new Promise(resolve => {
     setTimeout(resolve, seconds * 1000);
@@ -516,3 +517,19 @@ createImage('img/img-3.jpg')
     return wait(2);
   })
   .catch(err => console.error(err));
+
+*/
+
+//----------- Async Await
+
+const whereAmI = async country => {
+  // --- using Promises
+  // const res = fetch(`https://restcountries.com/v2/name/${country}`).then(res =>
+  //   console.log(res)
+  // );
+  const res = await fetch(`https://restcountries.com/v2/name/${country}`);
+  console.log(res);
+};
+
+whereAmI('norway');
+console.log('FIRST');
