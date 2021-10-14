@@ -4,9 +4,10 @@ const btn = document.querySelector('.btn-country');
 const countriesContainer = document.querySelector('.countries');
 
 const renderCountry = (data, className = '') => {
+  console.log(data);
   const html = `
   <article class="country ${className}">
-    <img class="country__img" src="${data.flags[0]}" />
+    <img class="country__img" src="${data.flags.png}" />
     <div class="country__data">
       <h3 class="country__name">${data.name}</h3>
       <h4 class="country__region">${data.region}</h4>
@@ -521,15 +522,36 @@ createImage('img/img-3.jpg')
 */
 
 //----------- Async Await
+const getPosition = () => {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};
 
-const whereAmI = async country => {
+const whereAmI = async () => {
+  // Geolocation
+  const pos = await getPosition();
+  const { latitude: lat, longitude: lng } = pos.coords;
+
+  // Reverse geocoding
+  const resGeo = await fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
+  const dataGeo = await resGeo.json();
+  console.log(dataGeo);
+
+  // Country data
+
   // --- using Promises
   // const res = fetch(`https://restcountries.com/v2/name/${country}`).then(res =>
   //   console.log(res)
   // );
-  const res = await fetch(`https://restcountries.com/v2/name/${country}`);
-  console.log(res);
+  const res = await fetch(
+    `https://restcountries.com/v2/name/${dataGeo.country}`
+  );
+  const data = await res.json();
+  console.log(data);
+  renderCountry(data[0]);
 };
 
-whereAmI('norway');
+whereAmI();
+// whereAmI('norway');
 console.log('FIRST');
