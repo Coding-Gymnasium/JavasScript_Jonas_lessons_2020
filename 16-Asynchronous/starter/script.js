@@ -576,7 +576,7 @@ console.log('FIRST');
   console.log('finished getting location');
 })();
 */
-
+/*
 const get3Countries = async (c1, c2, c3) => {
   try {
     // const [data1] = await getJSON(`https://restcountries.com/v2/name/${c1}`);
@@ -595,3 +595,54 @@ const get3Countries = async (c1, c2, c3) => {
 };
 
 get3Countries('portugal', 'canada', 'tanzania');
+*/
+
+//---- Promise.race, .allSettled, .all, .any
+// the results will show in the order they appear. The fastes first. This varies from call to call
+
+(async () => {
+  const res = await Promise.race([
+    getJSON(`https://restcountries.com/v2/name/italy`),
+    getJSON(`https://restcountries.com/v2/name/norway`),
+    getJSON(`https://restcountries.com/v2/name/denmark`),
+  ]);
+  console.log(res[0]);
+})();
+
+const timeout = sec => {
+  return new Promise((_, reject) => {
+    setTimeout(() => {
+      reject(new Error('request took too long'));
+    }, sec * 1000);
+  });
+};
+
+// Promise.race
+Promise.race([getJSON(`https://restcountries.com/v2/name/italy`), timeout(0.1)])
+  .then(res => console.log(res[0]))
+  .catch(err => console.error(err));
+
+// Promise.allSettled
+Promise.allSettled([
+  Promise.resolve('Success'),
+  Promise.reject('ERROR'),
+  Promise.resolve('Another success'),
+]).then(res => console.log(res));
+
+Promise.all([
+  Promise.resolve('Success'),
+  Promise.reject('ERROR'),
+  Promise.resolve('Another success'),
+])
+  .then(res => console.log(res))
+  .catch(err => console.error(err.message));
+
+// Promise.any [ES2021]
+
+Promise.any([
+  Promise.resolve('Success'),
+  Promise.reject('ERROR'),
+  Promise.resolve('Another success'),
+])
+  .then(res => console.log(res))
+  .catch(err => console.error(err.message));
