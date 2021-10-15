@@ -539,7 +539,6 @@ const whereAmI = async () => {
     if (!resGeo.ok) throw new Error('Problem getting location data');
 
     const dataGeo = await resGeo.json();
-    console.log(dataGeo);
 
     const res = await fetch(
       `https://restcountries.com/v2/name/${dataGeo.country}`
@@ -547,14 +546,21 @@ const whereAmI = async () => {
     if (!resGeo.ok) throw new Error('Problem getting country');
 
     const data = await res.json();
-    console.log(data);
     renderCountry(data[0]);
+
+    return `You are in ${dataGeo.city}, ${dataGeo.country}`;
   } catch (err) {
     console.error(err.message);
     renderError(`${err.message}`);
+
+    // Reject promise returned from async function
+    throw err;
   }
 };
 
-whereAmI();
+whereAmI()
+  .then(city => console.log(city))
+  .catch(err => console.error(`${err.message}`))
+  .finally(() => console.log('finished getting location'));
 // whereAmI('norway');
 console.log('FIRST');
