@@ -558,9 +558,19 @@ const whereAmI = async () => {
   }
 };
 
-whereAmI()
-  .then(city => console.log(city))
-  .catch(err => console.error(`${err.message}`))
-  .finally(() => console.log('finished getting location'));
-// whereAmI('norway');
+// whereAmI()
+//   .then(city => console.log(city))
+//   .catch(err => console.error(`${err.message}`))
+//   .finally(() => console.log('finished getting location'));
+// // whereAmI('norway');
 console.log('FIRST');
+
+(async () => {
+  try {
+    const city = await whereAmI();
+    console.log(city);
+  } catch (err) {
+    console.error(`${err.message}`);
+  }
+  console.log('finished getting location');
+})();
