@@ -1,5 +1,7 @@
 'use strict';
 
+// const { forEach } = require('lodash');
+
 const btn = document.querySelector('.btn-country');
 const countriesContainer = document.querySelector('.countries');
 
@@ -464,7 +466,8 @@ GOOD LUCK 😀
 // };
 // createImage('./img/img-1.jpg');
 
-/*
+//----- Challenge 3 solution here too ⬇️
+
 const wait = function (seconds) {
   return new Promise(resolve => {
     setTimeout(resolve, seconds * 1000);
@@ -490,7 +493,7 @@ const createImage = imgPath => {
 
 // createImage('./img/img-1.jpg');
 // createImage('');
-
+/*
 let currentImg;
 
 createImage('img/img-3.jpg')
@@ -518,7 +521,6 @@ createImage('img/img-3.jpg')
     return wait(2);
   })
   .catch(err => console.error(err));
-
 */
 
 /*
@@ -600,6 +602,7 @@ get3Countries('portugal', 'canada', 'tanzania');
 //---- Promise.race, .allSettled, .all, .any
 // the results will show in the order they appear. The fastes first. This varies from call to call
 
+/*
 (async () => {
   const res = await Promise.race([
     getJSON(`https://restcountries.com/v2/name/italy`),
@@ -646,3 +649,59 @@ Promise.any([
 ])
   .then(res => console.log(res))
   .catch(err => console.error(err.message));
+
+*/
+
+///////////////////////////////////////
+// Coding Challenge #3
+
+/*
+PART 1
+Write an async function 'loadNPause' that recreates Coding Challenge #2, this time using async/await (only the part where the promise is consumed). Compare the two versions, think about the big differences, and see which one you like more.
+Don't forget to test the error handler, and to set the network speed to 'Fast 3G' in the dev tools Network tab.
+
+PART 2
+1. Create an async function 'loadAll' that receives an array of image paths 'imgArr';
+2. Use .map to loop over the array, to load all the images with the 'createImage' function (call the resulting array 'imgs')
+3. Check out the 'imgs' array in the console! Is it like you expected?
+4. Use a promise combinator function to actually get the images from the array 😉
+5. Add the 'paralell' class to all the images (it has some CSS styles).
+
+TEST DATA: ['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']. To test, turn off the 'loadNPause' function.
+
+GOOD LUCK 😀
+*/
+
+// const loadNPause = async () => {
+//   try {
+//     // Load image 1
+//     let img = await createImage('img/img-1.jpg');
+//     console.log('image 1 loaded');
+//     await wait(2);
+//     img.style.display = 'none';
+
+//     // Load image 2
+//     img = await createImage('img/img-2.jpg');
+//     console.log('image 2 loaded');
+//     await wait(2);
+//     img.style.display = 'none';
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
+
+// loadNPause();
+
+// Part 2
+const loadAll = async imgArr => {
+  try {
+    const imgs = imgArr.map(async img => await createImage(img));
+
+    const imgsEl = await Promise.all(imgs);
+    imgsEl.forEach(img => img.classList.add('parallel'));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
