@@ -25,6 +25,7 @@ console.log(ShoppingCart.cart);
 
 // ----- Module Pattern
 
+/*
 const ShoppingCart2 = (function () {
   const cart = [];
   const shippingCost = 10;
@@ -53,3 +54,18 @@ const ShoppingCart2 = (function () {
 
 ShoppingCart2.addToCart('apple', 4);
 ShoppingCart2.addToCart('pear', 3);
+*/
+/*
+///////////////////////////////////////
+// CommonJS Modules
+// Export
+export.addTocart = function (product, quantity) {
+  cart.push({ product, quantity });
+  console.log(
+    `${quantity} ${product} added to cart (sipping cost is ${shippingCost})`
+  );
+};
+
+// Import
+const { addTocart } = require('./shoppingCart.js');
+*/
