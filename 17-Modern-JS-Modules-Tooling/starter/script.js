@@ -1,4 +1,3 @@
-/*
 // import * as ShoppingCart from './shoppingCart.js';
 import quantitySum, * as ShoppingCart from './shoppingCart.js';
 // import { addToCart, totalPrice as Price, tq } from './shoppingCart.js';
@@ -16,7 +15,6 @@ ShoppingCart.addToCart('banana', 35);
 quantitySum(); // quantitySum is an alias for addtotal because the way I imported it.
 
 console.log(ShoppingCart.cart);
-*/
 
 /**
  * Typically is not good practice to
@@ -70,6 +68,8 @@ export.addTocart = function (product, quantity) {
 const { addTocart } = require('./shoppingCart.js');
 */
 
+//========================
+// intro to NPM
 import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
 
 const state = {
@@ -87,3 +87,7 @@ state.user.loggedIn = false;
 console.log(stateClone);
 
 console.log(stateDeepClone);
+
+if (module.hot) {
+  module.hot.accept();
+}
